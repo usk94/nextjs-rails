@@ -1,2 +1,2 @@
-Next.js（v13）とRails APIを使ったアプリケーションです。
-Next.jsではApp Routerを使っています。
+Next.js（v13 App Router）とRails APIを使った、本を購入できるアプリケーションです。
+一覧に表示されている本は私の本棚から選んだものです（積読もたくさん含まれています）。
