@@ -1,3 +1,5 @@
+import { Book } from "@/types"
+
 const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL!}/books/`)
 
@@ -13,14 +15,14 @@ const Page = async () => {
   return (
     <>
       <div>hoge!</div>
-      {books.map((b) => {
+      {books.map((b: Book) => {
         return (
           <>
             <div>title: {b.title}</div>
-            <div>title: {b.description}</div>
-            <div>title: {b.author}</div>
-            <div>title: {b.page_count}</div>
-            <div>title: {b.image}</div>
+            <div>description: {b.description}</div>
+            <div>author: {b.author}</div>
+            <div>page_count: {b.page_count}</div>
+            <div>image: {b.image}</div>
           </>
         )
       })}
