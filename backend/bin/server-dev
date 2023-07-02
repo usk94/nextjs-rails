@@ -5,7 +5,6 @@
 # TODO: Dockerfileに移すか、毎回の必要なかったら削除する？
 bundle install
 bundle exec rails db:migrate 2>/dev/null || bundle exec rails db:create db:migrate
-bundle exec rails db:seed
 
 # If the container has been killed, there may be a stale pid file
 # preventing rails from booting up
