@@ -1,7 +1,7 @@
 import { Book } from "@/types"
 
 const getBooks = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL!}/books/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
