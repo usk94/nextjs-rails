@@ -1,7 +1,7 @@
 import axios from "axios"
 import fs from "fs/promises"
 
-const names = ["愛するということ"]
+const names = ["ボクたちはみんな大人になれなかった"]
 const apiUrls = names.map((n) => `https://www.googleapis.com/books/v1/volumes?q=${n}&maxResults=5`)
 
 function sanitizeString(str) {
