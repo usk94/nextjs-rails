@@ -1,8 +1,8 @@
 import axios from "axios"
 import fs from "fs/promises"
 
-const names = [""]
-const apiUrls = names.map((n) => `https://www.googleapis.com/books/v1/volumes?q=${n}&maxResults=1`)
+const names = ["愛するということ"]
+const apiUrls = names.map((n) => `https://www.googleapis.com/books/v1/volumes?q=${n}&maxResults=5`)
 
 function sanitizeString(str) {
   return str.replace(/[\uff01-\uff5e\uffe0-\uffef\u3000]/g, "")
