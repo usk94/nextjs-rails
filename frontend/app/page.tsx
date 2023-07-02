@@ -1,7 +1,12 @@
 import { Book } from "@/types"
 
 const getBooks = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL!}/books/`)
+  const res = await fetch(`https://nextjs-rails.onrender.com/api/v1/books/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
   console.log("process.env.NEXT_PUBLIC_BACKEND_URL", process.env.NEXT_PUBLIC_BACKEND_URL)
 
   if (!res.ok) {
