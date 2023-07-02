@@ -1,7 +1,5 @@
 class Api::V1::BooksController < ApplicationController
   def index
-    b = Book.all
-    p "hogehoge", b
     render json: { books: Book.all }
   end
 
