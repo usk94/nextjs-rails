@@ -17,5 +17,4 @@ COPY Gemfile* $APP/
 
 COPY . $APP/
 
-RUN bundle exec rails db:seed
 CMD ["./bin/server-dev"]
