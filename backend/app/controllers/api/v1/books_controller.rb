@@ -9,12 +9,11 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def create
-    book = Book.create!(book_params)
-    book.meanings.create!(meaning_params)
+    Book.create!(book_params)
   end
 
   private
     def book_params
-      params[:post].require(:book).permit(:body)
+      params.require(:book).permit(:title, :description, :image, :author, :page_count, :published_at)
     end
 end
