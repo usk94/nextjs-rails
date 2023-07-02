@@ -2,7 +2,6 @@ import { Book } from "@/types"
 
 const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL!}/books/`)
-  console.log("hoge", res.json())
 
   if (!res.ok) {
     throw new Error("Failed to fetch data")
@@ -12,6 +11,7 @@ const getBooks = async () => {
 }
 
 const Page = async () => {
+  console.log("hoge", await getBooks())
   const { books } = await getBooks()
   return (
     <>
