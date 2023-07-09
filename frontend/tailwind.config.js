@@ -10,6 +10,7 @@ module.exports = {
     },
     minWidth: {
       "1/2": "50%",
+      "2/5": "40%",
     },
     extend: {
       backgroundImage: {
