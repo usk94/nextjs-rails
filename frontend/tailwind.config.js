@@ -8,6 +8,9 @@ module.exports = {
       tertiary: "#6d97a3",
       neutral: "#FAFDF7",
     },
+    minWidth: {
+      "1/2": "50%",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
