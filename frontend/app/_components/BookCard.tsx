@@ -3,12 +3,14 @@ import Image from "next/image"
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
-    <button className="bg-secondary-light flex flex-col border border-beige1 rounded-xl w-72 h-48 m-5 items-center">
-      {book.image && <Image src={book.image} alt={book.title} width={150} height={220} />}
-      <p>title: {book.title}</p>
-      <p>description: {book.description}</p>
-      <p>author: {book.author}</p>
-      <p>page_count: {book.page_count}</p>
+    <button className="bg-secondary-light flex rounded-xl w-72 h-48 m-5 p-4 items-center">
+      <Image src={book.image || "/noImage.jpg"} alt={book.title} width={100} height={150} className="min-w-1/2 h-auto w-auto" />
+      <div className="flex flex-col max-w-40">
+        <p className="text-sm">{book.title}</p>
+        <p className="text-sm line-clamp-3">{book.description}</p>
+        <p className="text-sm">著者: {book.author}</p>
+        <p className="text-sm">{book.page_count}ページ</p>
+      </div>
     </button>
   )
 }
