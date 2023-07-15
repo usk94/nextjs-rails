@@ -1,32 +1,68 @@
 "use client"
 
-const Page = async () => {
-  const handleClick = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL!}/books`, {
-      method: "POST",
-      body: JSON.stringify({
-        book: {
-          title: "ボクたちはみんな大人になれなかった",
-          published_at: "2018-12",
-          description:
-            "それは人生でたった一人、ボクが自分より好きになったひとの名前だ。気が付けば親指は友達リクエストを送信していて、90年代の渋谷でふたりぼっち、世界の終わりへのカウントダウンを聴いた日々が甦る。彼女だけがボクのことを認めてくれた。本当に大好きだった。過去と現在をSNSがつなぐ、切なさ新時代の大人泣きラブ・ストーリー。あいみょん、相澤いくえによるエッセイ&漫画を収録。",
-          page_count: 192,
-          author: "燃え殻",
-          image: "http://books.google.com/books/content?id=F4ahvgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-        },
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+import { Book } from "@/types"
+import { useState } from "react"
+import useSWRMutation from "swr/mutation"
+
+const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } }) => {
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({
+      book: book,
+    }),
+  })
+}
+
+const Page = () => {
+  const { trigger, isMutating } = useSWRMutation("/api/user", updateBook)
+  const [value, setValue] = useState("")
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
+
+  const handleClickAddButton = async () => {
+    console.log("here!")
+  }
+
+  const handleClickSubmitButton = async () => {
+    alert("here2!")
+    // await trigger({ book: value })
   }
 
   return (
-    <div className="bg-neutral">
-      <div>hoge</div>
-      <button type="button" onClick={handleClick} className="w-20">
-        button!
-      </button>
+    <div className="bg-neutral w-screen h-screen">
+      <div className="flex flex-col">
+        <div>
+          <div className="text-lg font-semibold">クーポンを追加する</div>
+          <span className="mt-2 text-sm font-light">
+            クーポンコードをお持ちの方は、以下のフォームより
+            <br />
+            クーポンコードを入力してください。
+          </span>
+          <div className="mt-4 flex">
+            <div className="grow-2 leading-none">
+              <input
+                type="text"
+                onChange={handleChange}
+                className="h-10 w-full border border-gray-lighter p-2 text-base font-light focus:border-primary focus:outline-none"
+                placeholder="例）winter2020"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleClickAddButton}
+              disabled={isMutating}
+              className="ml-3 rounded border border-gray px-4 py-2 text-base font-semibold leading-none"
+            >
+              追加
+            </button>
+          </div>
+        </div>
+        <button type="button" onClick={handleClickSubmitButton} className="ml-3 rounded border border-gray px-4 py-2 text-base font-semibold leading-none w-24">
+          submit!
+        </button>
+      </div>
     </div>
   )
 }

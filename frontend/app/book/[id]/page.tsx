@@ -1,5 +1,5 @@
-import { Book } from "@/types"
 import Image from "next/image"
+import { zBook } from "@/types"
 
 const getBook = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${id}/`)
@@ -8,12 +8,13 @@ const getBook = async (id: string) => {
     throw new Error("Failed to fetch data")
   }
 
-  return res.json()
+  const data = await res.json()
+  const book = zBook.parse(data.book)
+  return book
 }
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  const data = await getBook(params.id)
-  const book = data.book as Book
+  const book = await getBook(params.id)
 
   return (
     <div className="bg-neutral flex flex-wrap">
