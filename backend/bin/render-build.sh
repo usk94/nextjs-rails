@@ -4,4 +4,6 @@ set -o errexit
 
 cd backend
 bundle install
-bundle exec rake db:migrate
+bundle exec rake db:reset
+bundle exec rails db:seed
+# bundle exec rake db:migrate
