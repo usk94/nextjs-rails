@@ -1,31 +1,21 @@
 [
-  {
-    "title": "ぽてんしゃる。",
-    "author": "糸井重里",
-    "published_at": "2013",
-    "page_count": 287
-  },
+  { "title": "ぽてんしゃる。", "published_at": "2013", "description": null, "page_count": 287, "author": "糸井重里", "image": null },
   {
     "title": "ふとふり返ると",
-    "author": "近藤喜文",
     "published_at": "1998-03",
     "description": "「火垂るの墓」「おもひでぽろぽろ」キャラクターデザイン・作画監督、「耳をすませば」監督、「もののけ姫」作画監督等、スタジオジブリの名作の数々を支え続けた動画(アニメーション)の詩人、近藤喜文。わずか47歳で世を去った彼が、5年の歳月の間に描きとめた、子供たち、そして人々の光あふれる瞬間。",
     "page_count": 100,
+    "author": "近藤喜文",
     "image": "http://books.google.com/books/content?id=S0IqAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
-  {
-    "title": "子どものための精神医学",
-    "published_at": "2017-03",
-    "page_count": 464,
-    "author": "滝川一廣"
-  },
+  { "title": "子どものための精神医学", "published_at": "2017-03", "description": null, "page_count": 464, "author": "滝川一廣", "image": null },
   {
     "title": "“責任”の生成",
     "published_at": "2020-12",
     "description": "わたしたちが“責任あるもの”になるとき―『暇と退屈の倫理学』以降、お互いの研究への深い共鳴と応答、そしてそこから発展する複数の思考を感受し合いながら続けられた約10年間にわたる共同研究は、堕落した「責任」の概念/イメージを抜本的に問い直し、その先の、わたしたちが獲得すべき「日常」へと架橋する。この時代そのものに向けられた議論のすべて、満を持して刊行。",
     "page_count": 432,
-    "image": "http://books.google.com/books/content?id=BXoMzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    "author": "國分功一郎"
+    "author": "國分功一郎",
+    "image": "http://books.google.com/books/content?id=BXoMzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
   {
     "title": "そして、バトンは渡された",
@@ -44,13 +34,6 @@
     "image": "http://books.google.com/books/content?id=hNgjNwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
   {
-    "title": "ボクたちはみんな大人になれなかった",
-    "published_at": "2017-06",
-    "description": "各界の著名人、大人泣き! 大昔フラれた大好きな彼女に、間違えて「友達申請」してしまった43歳独身ボクの、長い長い1日の物語。",
-    "page_count": 160,
-    "author": "燃え殻"
-  },
-  {
     "title": "すべて忘れてしまうから",
     "published_at": "2020-07",
     "description": "いまはない喫茶店、帰りがけの駅のホーム、予定のなかったクリスマスイブ、点滴の終わりを告げるナースコール、安いビジネスホテルの廊下、知らない街のクラブ、朝のコンビニの最後尾、新幹線こだまの自由席、民宿の窓でふくらむ白いカーテン、居場所のないパーティー会場―ふとした瞬間におとずれる、もう戻れない日々との再会。ときに狼狽え、ときに心揺さぶられながら、すべて忘れてしまう日常にささやかな抵抗を試みる「断片的回顧録」。",
@@ -61,6 +44,7 @@
   {
     "title": "夢に迷って、タクシーを呼んだ",
     "published_at": "2021-03",
+    "description": null,
     "page_count": 212,
     "author": "燃え殻",
     "image": "http://books.google.com/books/content?id=eaFhzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
@@ -78,7 +62,8 @@
     "published_at": "2017",
     "description": "月刊『アフタヌーン』でデビュー! 2017年最注目の新鋭、初コミックス。さえない男子が予想外のドラマをつむぐ!",
     "page_count": 160,
-    "author": "熊倉献"
+    "author": "熊倉献",
+    "image": null
   },
   {
     "title": "苦汁100% 濃縮還元",
@@ -112,18 +97,7 @@
     "author": "森博嗣",
     "image": "http://books.google.com/books/content?id=Lw5PDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
-  {
-    "title": "思えば、孤独は美しい。",
-    "published_at": "2017",
-    "page_count": 289,
-    "author": "糸井重里"
-  },
-  {
-    "title": "夜とコンクリート",
-    "published_at": "2014",
-    "page_count": 210,
-    "author": "町田洋"
-  },
+  { "title": "思えば、孤独は美しい。", "published_at": "2017", "description": null, "page_count": 289, "author": "糸井重里", "image": null },
   {
     "title": "ゴールデンスランバー",
     "published_at": "2010-12-01",
@@ -179,12 +153,6 @@
     "page_count": 286,
     "author": "朝井リョウ",
     "image": "http://books.google.com/books/content?id=5MixNAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-  },
-  {
-    "title": "母を亡くした時、僕は遺骨を食べたいと思った。",
-    "published_at": "2014",
-    "page_count": 170,
-    "author": "宮川さとし"
   },
   {
     "title": "20歲 (にじゅっさい) の自分に受けさせたい文章講義",
@@ -254,6 +222,7 @@
     "title": "聖の青春",
     "published_at": "2015-06-20",
     "description": "重い腎臓病を抱えつつ将棋界に入門、名人を目指し最高峰リーグ「A級」で奮闘のさなか生涯を終えた天才棋士、村山聖。名人への夢に手をかけ、果たせず倒れた“怪童”の生涯を描く。第13回新潮学芸賞受賞。",
+    "page_count": null,
     "author": "大崎善生",
     "image": "http://books.google.com/books/content?id=de3tCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
@@ -264,12 +233,6 @@
     "page_count": 347,
     "author": "三浦しをん",
     "image": "http://books.google.com/books/content?id=EMUPrgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-  },
-  {
-    "title": "愛するということ〔新訳版〕",
-    "published_at": "1991",
-    "page_count": 216,
-    "author": "エーリッヒ・フロム"
   },
   {
     "title": "中の人などいない@NHK広報のツイートはなぜユルい?",
@@ -328,13 +291,6 @@
     "image": "http://books.google.com/books/content?id=qNMHnwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
   {
-    "title": "完訳7つの習慣",
-    "published_at": "2013-08-01",
-    "description": "A leading management consultant outlines seven organizational rules for improving effectiveness and increasing productivity at work and at home.",
-    "page_count": 521,
-    "author": "Stephen R. Covey"
-  },
-  {
     "title": "父が娘に語る美しく、深く、壮大で、とんでもなくわかりやすい経済の話。",
     "published_at": "2019-03",
     "description": "元財務大臣の父がホンネで語り尽くす!シンプルで、心に響く言葉で本質をつき、世界中で大絶賛されている、究極の経済×文明論!",
@@ -381,12 +337,6 @@
     "page_count": 401,
     "author": "ケヴィンケリー",
     "image": "http://books.google.com/books/content?id=ERL4vQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-  },
-  {
-    "title": "モテないけど生きてます",
-    "published_at": "2020-09",
-    "page_count": 296,
-    "author": "ぼくらの非モテ研究会"
   },
   {
     "title": "「無為」の技法 Not Doing",
@@ -444,18 +394,8 @@
     "author": "岸政彦",
     "image": "http://books.google.com/books/content?id=ZHMYEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
-  {
-    "title": "居るのはつらいよ",
-    "published_at": "2019-02",
-    "page_count": 347,
-    "author": "東畑開人"
-  },
-  {
-    "title": "リハビリの夜",
-    "published_at": "2009-12",
-    "page_count": 264,
-    "author": "熊谷晋一郎"
-  },
+  { "title": "居るのはつらいよ", "published_at": "2019-02", "description": null, "page_count": 347, "author": "東畑開人", "image": null },
+  { "title": "リハビリの夜", "published_at": "2009-12", "description": null, "page_count": 264, "author": "熊谷晋一郎", "image": null },
   {
     "title": "わたしたちのウェルビーイングをつくりあうために",
     "published_at": "2020-03",
@@ -464,19 +404,7 @@
     "author": "渡邊淳司",
     "image": "http://books.google.com/books/content?id=KBltzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
-  {
-    "title": "人文的、あまりに人文的",
-    "published_at": "2021",
-    "description": "在野研究者として注目を浴びる二人が新旧の人文書を読み、人文的思考を提案。取り上げるのは古典と新刊入り乱れての40冊+α。",
-    "page_count": 320,
-    "author": "山本貴光"
-  },
-  {
-    "title": "精神分析の歩き方",
-    "published_at": "2021-05",
-    "page_count": 344,
-    "author": "山崎孝明"
-  },
+  { "title": "精神分析の歩き方", "published_at": "2021-05", "description": null, "page_count": 344, "author": "山崎孝明", "image": null },
   {
     "title": "心はどこへ消えた?",
     "published_at": "2021-09-10",
@@ -505,6 +433,7 @@
     "title": "サピエンス全史上文明の構造と人類の幸福",
     "published_at": "2016-09-09",
     "description": "国家、貨幣、企業……虚構が他人との協力を可能にし、文明をもたらしたではその文明は、人類を幸福にしたのだろうか現代世界を鋭くえぐる、40カ国で刊行の世界的ベストセラー",
+    "page_count": null,
     "author": "ユヴァル・ノア・ハラリ",
     "image": "http://books.google.com/books/content?id=8L8_DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
@@ -540,12 +469,7 @@
     "author": "岸政彦",
     "image": "http://books.google.com/books/content?id=oDJzzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
-  {
-    "title": "人はみな妄想する",
-    "published_at": "2015",
-    "page_count": 467,
-    "author": "松本卓也"
-  },
+  { "title": "人はみな妄想する", "published_at": "2015", "description": null, "page_count": 467, "author": "松本卓也", "image": null },
   {
     "title": "ジャパニメーションの成熟と喪失",
     "published_at": "2021-08",
@@ -561,12 +485,6 @@
     "page_count": 313,
     "author": "開一夫",
     "image": "http://books.google.com/books/content?id=GWpTswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-  },
-  {
-    "title": "遊びと人間",
-    "published_at": "1990",
-    "page_count": 390,
-    "author": "Roger Caillois"
   },
   {
     "title": "哲学の先生と人生の話をしよう",
@@ -604,6 +522,7 @@
     "title": "こころの処方箋",
     "published_at": "1998-06-01",
     "description": "「耐える」だけが精神力ではない。心の支えは、時にたましいの重荷になる。――あなたが世の理不尽に拳を振りあげたくなったとき、人間関係のしがらみに泣きたくなったとき、本書に綴られた55章が、真剣に悩むこころの声の微かな震えを聴き取り、トラブルに立ち向かう秘策を与えてくれるだろう。この、短い一章一章に込められた偉大な「常識」の力が、かならず助けになってくれるだろう。",
+    "page_count": null,
     "author": "河合隼雄",
     "image": "http://books.google.com/books/content?id=jrJHBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
@@ -680,54 +599,12 @@
     "image": "http://books.google.com/books/content?id=oB2eDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
   {
-    "title": "金色のガッシュ!!",
-    "published_at": "2019",
-    "page_count": 383,
-    "author": "雷句誠"
-  },
-  {
-    "title": "彼方のアストラ 1",
-    "published_at": "2016-07",
-    "page_count": 204,
-    "author": "篠原健太"
-  },
-  {
     "title": "【推しの子】 6",
     "published_at": "2021-11-19",
     "description": "「完全に下手だとナメてた役者がいきなりめちゃくちゃ凄い事 始めたら激アツだろ」 第五章 2.5次元舞台編、いよいよ本番も間近!! 一時は原作者・鮫島アビ子が“全ボツ”にした脚本だったが、アビ子は脚本家・GOAと和解し納得のいく脚本に仕上がった。しかし、クリエイターが団結した脚本は役者の演技に全投げのトガッた作品に!? “感情演技”が求められた星野アクアは、アイを巡る自身の深いトラウマと向き合う事になる…。“赤坂アカx槍メンゴ”の豪華タッグが全く新しい切り口で“芸能界”を描く衝撃作…第6巻!!",
     "page_count": 197,
     "author": "赤坂アカ",
     "image": "http://books.google.com/books/content?id=TsxLEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-  },
-  {
-    "title": "監督不行届",
-    "published_at": "2005-02",
-    "page_count": 160,
-    "author": "安野モヨコ"
-  },
-  {
-    "title": "東京トイボックス 1(新装版)",
-    "published_at": "2007-09",
-    "page_count": 228,
-    "author": "うめ"
-  },
-  {
-    "title": "Beastars 1",
-    "published_at": "2017",
-    "page_count": 208,
-    "author": "板垣巴留"
-  },
-  {
-    "title": "左ききのエレン 1",
-    "published_at": "2017-12",
-    "page_count": 208,
-    "author": "かっぴー"
-  },
-  {
-    "title": "鋼の錬金術師",
-    "published_at": "2011",
-    "page_count": 269,
-    "author": "荒川弘"
   },
   {
     "title": "ダルちゃん",
@@ -746,12 +623,6 @@
     "image": "http://books.google.com/books/content?id=zZQZEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   },
   {
-    "title": "シャーマンキング完全版 1",
-    "published_at": "2008-03",
-    "page_count": 228,
-    "author": "武井宏之"
-  },
-  {
     "title": "ONE PIECE 45",
     "published_at": "2007-03-02",
     "description": "激戦を終え、フランキーに新しい船を造って貰う間、ルフィ達の前に意外な人物が訪れる!! 一方、未だ仲間に戻れないウソップは、戻る為の予行演習を繰り返すが…!? “ひとつなぎの大秘宝”を巡る海洋冒険ロマン!!",
@@ -766,5 +637,125 @@
     "page_count": 184,
     "author": "岸本斉史",
     "image": "http://books.google.com/books/content?id=jPLJCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "愛するということ",
+    "published_at": "2020-08",
+    "description": "30年ぶりに訳文に大幅に手を入れた、改訳・新装版!",
+    "page_count": 209,
+    "author": "エーリッヒ・フロム",
+    "image": "http://books.google.com/books/content?id=RUfCzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "title": "ボクたちはみんな大人になれなかった",
+    "published_at": "2018-12",
+    "description": "それは人生でたった一人、ボクが自分より好きになったひとの名前だ。気が付けば親指は友達リクエストを送信していて、90年代の渋谷でふたりぼっち、世界の終わりへのカウントダウンを聴いた日々が甦る。彼女だけがボクのことを認めてくれた。本当に大好きだった。過去と現在をSNSがつなぐ、切なさ新時代の大人泣きラブ・ストーリー。あいみょん、相澤いくえによるエッセイ&漫画を収録。",
+    "page_count": 192,
+    "author": "燃え殻",
+    "image": "http://books.google.com/books/content?id=F4ahvgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "title": "夜とコンクリート",
+    "published_at": "2014-01-31",
+    "description": "第17回文化庁メディア芸術祭マンガ部門新人賞受賞作「夏休みの町」を収録した、新しくて懐かしい魅惑の作家、町田洋の初期作品集 眠れない建築士と建物の声を聴く男。丘の上の戦闘機とありふれた夏休み。君に会えない僕と屋上で見上げた空。夜とコンクリート。 平坦な日常にある、もう一つの地平に見たことのない景色がある。町田洋の静かな世界がここに【祥伝社shodensha】",
+    "page_count": null,
+    "author": "町田洋",
+    "image": "http://books.google.com/books/content?id=0UKmBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "監督不行届",
+    "published_at": "2005-02-15",
+    "description": "人気漫画家・安野モヨコと夫・庵野秀明のデイープな日常が赤裸々につづられた爆笑異色作 アニメ界と漫画界のビッグカップルが、こんなにもおかしく愛おしいオタク生活を送っているなんて… 世界中に生息するオタク君はもちろん、オタ嫁オタク夫を持つ妻も共感すること間違いなしの衝撃作!!【祥伝社shodensha】",
+    "page_count": null,
+    "author": "安野モヨコ",
+    "image": "http://books.google.com/books/content?id=cjumBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "モテないけど生きてます",
+    "published_at": "2020-09-28",
+    "description": "「ぼくらの非モテ研究会」は男性の生きづらさを語り合う場としての当事者研究グループである。非モテ研では、幅広い分野で注目されている当事者研究の手法を応用し、これまであまり語られてこなかった男性たちの「痛み・悲しみ」だけでなく、「非モテ」の現状を打開しようとする、切実さのなかにもユーモアあふれる研究成果を蓄積している。 「女神」「ポジティブ妄想」「自爆型告白」などの観点からは、単純な「非モテ恋人がいない」という考え方では捉えきれない、親からの影響、学生時代の経験、社会からの疎外感・孤独感など、多様な物語が浮かび上がる。 研究会を主宰する男性学研究者を中心に、ジェンダーやフェミニズムの概況を踏まえながら、「非モテ」をキーワードに立ち上がる男性たちの語りに寄り添い、ともに研究してきた成果をまとめる。 非モテ研メンバーたちの当事者研究も豊富に盛り込み、既存の男性学では「語れない語らない」とされている男性たちの切実な語りから多様でよりよい生き方を探る、新しい時代の男性学を切り開く一冊。",
+    "page_count": 296,
+    "author": "ぼくらの非モテ研究会",
+    "image": "http://books.google.com/books/content?id=o3RgEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "母を亡くした時、僕は遺骨を食べたいと思った。",
+    "published_at": "2014-08-09",
+    "description": "「自分の母親だけは、絶対に死なないと思い込んでいた――」最愛の母のがん告知、闘病、葬儀。そして死後も淡々と続いていく日常で作者が発見したこと。現実と真摯に向き合う過程で見えてきた“母の死”の意味とは――。どこか勝手の違う“母親のいない世界の違和感”を新鋭が紡ぎだす自伝エッセイ漫画。",
+    "page_count": 178,
+    "author": "宮川さとし",
+    "image": "http://books.google.com/books/content?id=5bSLBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "完訳 7つの習慣",
+    "published_at": "2020-01-29",
+    "description": null,
+    "page_count": 675,
+    "author": "スティーブン・R. コヴィー",
+    "image": "http://books.google.com/books/content?id=wQlLzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "title": "人文的、あまりに人文的",
+    "published_at": "2021",
+    "description": "在野研究者として注目を浴びる二人が新旧の人文書を読み、人文的思考を提案。取り上げるのは古典と新刊入り乱れての40冊+α。",
+    "page_count": 320,
+    "author": "山本貴光",
+    "image": null
+  },
+  {
+    "title": "遊びと人間",
+    "published_at": "1990-04-05",
+    "description": "なぜ人間は遊ぶのか。人は夢、詩、神話とともに、遊びによって超現実の世界を創る。現代フランスの代表的知識人といわれるカイヨワは、遊びの独自の価値を理性の光に照らすことで、より豊かになると考え、非合理も最も合理的に語ってみせる。彼は、遊びのすべてに通じる不変の性質として競争・運・模擬・眩暈を提示し、これを基点に文化の発達を考察した。遊びの純粋な像を描き出した遊戯論の名著。",
+    "page_count": 400,
+    "author": "ロジェ・カイヨワ",
+    "image": "http://books.google.com/books/content?id=pHxREAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "金色のガッシュ 完全版14",
+    "published_at": null,
+    "description": "あの「金色のガッシュ」が完全版として登場雷句誠による表紙全巻描き下ろし、カラーページはカラーのまま鮮やかによみがえります。そして注目は描き下ろしとなるオマケの短編マンガ「ガッシュカフェ」。魔物の子供達が戦いを離れ、お茶を飲みながら語り合い、意外な一面を見せ合います。第14回は「テッドとチェリッシュ」がお客様。 第14巻の内容は遂にファウード編の最終決着へゼオンの過去、デュフォーの過去、そしてガッシュの過去が明らかになり、二人の勝負に決着が・・・そして、遂に残りの魔物も残り体となり、最終決戦へ。最後の戦いで明かされるさらなる地獄とは・・・LEVEL262LEVEL282までを収録。※今の所、紙の本での出版予定はありません。",
+    "page_count": null,
+    "author": "雷句誠",
+    "image": "http://books.google.com/books/content?id=UJmADwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "東京トイボックス【デジタルリマスター版】(2)",
+    "published_at": "2007-09-22",
+    "description": "クリエイターたちの魂を揺さぶる熱血ゲーム業界群像劇『東京トイボックス』が、デジタルリマスター版として復活 『東京トイボクシーズ』へと続く起源の物語を、しかと見届けよ!! ※デジタルリマスター版では、当時の生原稿データから電子書籍用にデータをフルリメイク。巻末には、当時の秘蔵ネームを一部収録しております 2巻あらすじ 東京・秋葉原の弱小ゲーム制作会社・スタジオG3は、スタッフ総出でオリジナルタイトル『サムライ☆キッチン』の海外版制作を進める。 しかし、完成間近でまさかのミス発覚!? さらに大手ゲーム会社から想定外の条件提示を受け、お世辞にも順風満帆とは言えないなか……!? 果たして月山は大手町のキャリアOLに戻るのか、そして太陽は己の信念を貫くことが出来るのか!? 太陽と月山の恋の行方、さらには因縁の相手・仙水との対決も見逃せない熱血ゲーム業界物語!! そして舞台は『大東京トイボックス』へと引き継がれてゆく――。",
+    "page_count": 226,
+    "author": "うめ小沢高広・妹尾朝子",
+    "image": "http://books.google.com/books/content?id=iOfFDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "BEASTARS",
+    "published_at": "2018-09-07",
+    "description": "テム食殺事件の真犯人は身近にいた!! 真相を突き止めたレゴシと、その場に居合わせたピナは、その瞬間から真犯人の殺意の標的となり…!?",
+    "page_count": 205,
+    "author": "板垣巴留",
+    "image": "http://books.google.com/books/content?id=SPNsDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "原作版 左ききのエレン: 不夜城の兵隊",
+    "published_at": null,
+    "description": "天才になれなかったすべての人へ――。 朝倉光一は、大手広告代理店に勤めるデザイナー。いつか有名になることを夢みてがむしゃらに働き、ようやくアートディレクターに就任する。しかし、新しくついた実力主義の上司に降格を言い渡され、事態は思わぬ方向へ傾き始める。 2015年、メディアプラットフォームnoteで公開されてすぐに話題を呼び、ウェブメディアcakes連載時も不動の人気を誇る「左ききのエレン」、待望の電子コミック化「SNSポリス」「おしゃ家ソムリエおしゃ子! 」で一躍話題になった「かっぴー」が手がける、初の長編ストーリーマンガ。描き下ろし「左ききのエレン 2018」を収録。 『左ききのエレン』3巻 不夜城の兵隊編 ・15話「はじまったら、はじまった時わかるよ」 ・16話「ガッツしかないから」 ・17話「先輩を倒すために」 ・番外編「広告営業の心労 前編」 ・番外編「広告営業の心労 後編」 ・18話「オレ達はもう上司と部下じゃねぇ」 ・19話「才能ってもんの正体を知ってるか」 ・左ききのエレン 2018「横浜・海堂宅にて」 ■著者について 漫画家。株式会社なつやすみ代表取締役社長。武蔵野美術大学でデザインを学び、2009年卒業後は東急エージェンシーのクリエイティブ職に。アートディレクター・コピーライター・CMプランナーなど天職が見つからぬままアイデアを書き留めた絵コンテを量産する。2014年に面白法人カヤックへ転職。2015年9月、漫画を見た同僚に背中を押され、描いた漫画「フェイスブックポリス」をWEBサイトへ公開し、大きな反響を呼んでネットデビューを果たした。以降、「フェイスブックポリス」の続編「SNSポリス」をはじめ「おしゃ家ソムリエおしゃ子! 」「左ききのエレン」「おしゃれキングビート! 」「裸の王様VSアパレル店員」などWEBメディアでの多数の連載がはじまる。子どもの頃憧れた映画の脚本家やテレビ番組の構成作家など、自分が考えた物語を世に広める事を夢みて、2016年2月に株式会社なつやすみを設立した。社訓は「忙しく、遊ぶ。」。",
+    "page_count": 204,
+    "author": "かっぴー",
+    "image": "http://books.google.com/books/content?id=0ONqDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "title": "鋼の錬金術師",
+    "published_at": "2009",
+    "description": null,
+    "page_count": 176,
+    "author": "荒川弘",
+    "image": "http://books.google.com/books/content?id=d09_PwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "title": "SHAMAN KING",
+    "published_at": "2021-10-15",
+    "description": "十祭司達を倒し、ハオの下へたどり着いた葉くん達だったが、シャーマンキングとなったハオの圧倒的な力を前に全滅してしまう。今までの仲間たちの想いが、願いが、再び葉くん達を立ち上がらせる。最期の戦いについに決着が",
+    "page_count": null,
+    "author": "武井宏之",
+    "image": "http://books.google.com/books/content?id=26twDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   }
 ]
