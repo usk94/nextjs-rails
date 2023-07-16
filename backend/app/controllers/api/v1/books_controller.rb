@@ -12,6 +12,10 @@ class Api::V1::BooksController < ApplicationController
     Book.create!(book_params)
   end
 
+  def delete_all
+    Book.delete_all
+  end
+
   private
     def book_params
       params.require(:book).permit(:title, :description, :image, :author, :page_count, :published_at)

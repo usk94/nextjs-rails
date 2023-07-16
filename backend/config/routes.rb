@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      resources :books, only: [:index, :create, :show]
+      resources :books, only: [:index, :create, :show] do
+        collection do
+          delete "delete_all"
+        end
+      end
     end
   end
 end

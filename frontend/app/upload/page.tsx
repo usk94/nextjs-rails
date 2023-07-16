@@ -26,8 +26,9 @@ const Page = () => {
   }
 
   const handleClickSubmitButton = async () => {
-    alert("here2!")
-    // await trigger({ book: value })
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/delete_all`, {
+      method: "DELETE",
+    })
   }
 
   return (
