@@ -18,8 +18,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="bg-neutral flex flex-wrap">
+      <p className="mt-2 text-sm font-light">
+        本の料金は1💎〜100💎でランダムに設定されています（このサービスでの通貨はダイヤ 💎 です）
+      </p>
       <div className="bg-secondary-light flex rounded-xl w-72 h-48 m-5 p-4 items-center">
-        <Image src={book.image || "/noImage.jpg"} alt={book.title} width={100} height={150} className="min-w-1/2 h-auto w-auto" />
+        <Image
+          src={book.image || "/noImage.jpg"}
+          alt={book.title}
+          width={100}
+          height={150}
+          className="min-w-1/2 h-auto w-auto"
+        />
         <div className="flex flex-col max-w-40">
           <p className="text-sm">{book.title}</p>
           <p className="text-sm line-clamp-3">{book.description}</p>
