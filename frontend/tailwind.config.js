@@ -7,6 +7,8 @@ module.exports = {
       secondary: { DEFAULT: "#819685", light: "#EFF5ED" },
       tertiary: "#6d97a3",
       neutral: "#FAFDF7",
+      black: "#000000",
+      white: "#FFFFFF",
     },
     minWidth: {
       "1/2": "50%",
