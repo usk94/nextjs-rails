@@ -15,60 +15,26 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } 
   })
 }
 
-const SearchResult = ({
-  books,
-  selectBook,
-  handleSubmit,
-}: {
-  books: GoogleApiBook[]
-  selectBook: (book: GoogleApiBook) => void
-  handleSubmit: () => void
-}) => {
-  return books.length > 0 ? (
-    <Fragment>
-      <h2 className="mt-8 text-xl font-semibold">料金を設定して、アップロードする</h2>
-      <p className="mt-2 text-sm font-light">
-        検索結果の中から一冊選択し、アップロードボタンを押してください。
-      </p>
-      <div className="mt-4 flex flex-wrap gap-5">
-        {books.map((book, index) => (
-          <button
-            type="button"
-            className="flex flex-col bg-white border border-solid border-black w-60"
-            key={index}
-            onClick={() => selectBook(book)}
-          >
-            {/* TODO: next/imageにする */}
-            {book.volumeInfo?.imageLinks?.thumbnail && (
-              <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-            )}
-            <div className="text-sm">
-              <p>{book.volumeInfo.title}</p>
-              {book.volumeInfo.authors.length > 0 && <p>{book.volumeInfo.authors[0]}</p>}
-            </div>
-          </button>
-        ))}
-      </div>
-      <button
-        type="button"
-        onClick={handleSubmit}
-        className="mt-3 bg-primary text-white rounded border border-gray px-4 py-2 text-base leading-none w-48"
-      >
-        アップロードする
-      </button>
-    </Fragment>
-  ) : (
-    <p>検索の結果、該当する本が見つかりませんでした。</p>
-  )
-}
-
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation("/api/user", updateBook)
+  const { trigger, isMutating } = useSWRMutation(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`,
+    updateBook
+  )
   const [searchWord, setSearchWord] = useState("")
-  const [books, setBooks] = useState<GoogleApiBook[] | null>(null)
+  const [books, setBooks] = useState(
+    Array(5).fill({
+      volumeInfo: {
+        title: "",
+        imageLinks: {
+          thumbnail: "/noImage.jpg",
+        },
+      },
+    })
+  )
+
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
   }
 
@@ -86,12 +52,14 @@ const Page = () => {
     setSelectedBook({
       title: book.volumeInfo.title,
       description: book.volumeInfo.description,
-      author: book.volumeInfo.authors[0],
+      author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : "",
       page_count: book.volumeInfo.pageCount,
       published_at: book.volumeInfo.publishedDate,
-      image: book.volumeInfo.imageLinks.thumbnail,
+      image: book.volumeInfo?.imageLinks?.thumbnail ?? "",
     })
   }
+
+  const handleChangePriceInput = () => {}
 
   const handleSubmit = async () => {
     alert("here2!")
@@ -101,7 +69,7 @@ const Page = () => {
     <div className="bg-neutral w-screen h-screen">
       <div className="flex flex-col p-12">
         <div>
-          <h2 className="text-xl font-semibold">本を調べる</h2>
+          <h2 className="text-xl font-semibold">本を調べて、料金を設定して、保存しよう</h2>
           <p className="mt-2 text-sm font-light">
             好きな本のタイトルもしくは著者を入力して、検索してください。
           </p>
@@ -109,9 +77,9 @@ const Page = () => {
             <div className="grow-2 leading-none">
               <input
                 type="text"
-                onChange={handleChange}
+                onChange={handleChangeSearchInput}
                 className="h-10 w-full border border-gray-lighter p-2 font-light focus:outline-none"
-                placeholder="例）winter2020"
+                placeholder="例）ハリーポッター"
               />
             </div>
             <button
@@ -125,9 +93,57 @@ const Page = () => {
           </div>
         </div>
 
-        {books && (
-          <SearchResult books={books} handleSubmit={handleSubmit} selectBook={selectBook} />
-        )}
+        {books &&
+          (books.length > 0 ? (
+            <Fragment>
+              <div className="mt-4 flex flex-wrap gap-5">
+                {books.map((book, index) => (
+                  <button
+                    type="button"
+                    className="flex flex-col bg-white border border-solid border-black w-60"
+                    key={index}
+                    onClick={() => selectBook(book)}
+                  >
+                    {/* TODO: next/imageにする */}
+                    {book.volumeInfo?.imageLinks?.thumbnail && (
+                      <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+                    )}
+                    <div className="text-sm">
+                      <p>{book.volumeInfo.title}</p>
+                      {book.volumeInfo.authors && book.volumeInfo.authors.length > 0 && (
+                        <p>{book.volumeInfo.authors[0]}</p>
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </Fragment>
+          ) : (
+            <p>検索の結果、該当する本が見つかりませんでした。</p>
+          ))}
+        <div className="flex flex-col mt-6">
+          <div className="flex flex-col">
+            <p className="mt-2 text-sm font-light">
+              一冊選択したあと、本の料金を1🐚〜1000🐚で設定してください（このサービスでの通貨は貝殻
+              🐚 です）
+            </p>
+          </div>
+          <div className="mt-4 flex">
+            <input
+              type="text"
+              inputMode="numeric"
+              className="h-10 border border-gray-lighter p-2 font-light focus:outline-none w-24"
+            />
+            <span className="ml-2 flex items-center justify-center text-lg">🐚</span>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="mt-3 bg-primary text-white rounded border border-gray px-4 py-2 text-base leading-none w-48"
+        >
+          保存する
+        </button>
       </div>
     </div>
   )
