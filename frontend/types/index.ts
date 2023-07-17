@@ -4,6 +4,7 @@ export type Book = {
   author?: string
   page_count?: number
   image?: string
+  price: number
   published_at?: string
 }
 
