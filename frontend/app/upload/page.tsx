@@ -56,6 +56,7 @@ const Page = () => {
       page_count: book.volumeInfo.pageCount,
       published_at: book.volumeInfo.publishedDate,
       image: book.volumeInfo?.imageLinks?.thumbnail ?? "",
+      price: 0,
     })
   }
 
