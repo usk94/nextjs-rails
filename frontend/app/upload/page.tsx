@@ -64,14 +64,14 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    alert(selectedBook?.title)
+    // selectedBook && trigger({ book: selectedBook })
   }
 
   return (
     <div className="bg-neutral w-screen h-screen">
       <div className="flex flex-col p-12">
         <div>
-          <h2 className="text-xl font-semibold">本を仕入れて、本棚に保管しよう</h2>
+          <h1 className="text-xl font-semibold">本を選んで、本棚に保管しよう</h1>
           <p className="mt-2 text-sm font-light">
             好きな本のタイトルもしくは著者を入力して、検索してください。
           </p>
