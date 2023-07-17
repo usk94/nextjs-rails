@@ -1,6 +1,7 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
+import { uploadSchema } from "@/utils/bookValidator"
 import { Fragment, useState } from "react"
 import useSWRMutation from "swr/mutation"
 
@@ -12,6 +13,9 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } 
     body: JSON.stringify({
       book: book,
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
 }
 
@@ -31,7 +35,7 @@ const Page = () => {
       },
     })
   )
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState<number | null>(null)
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +69,12 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    // selectedBook && trigger({ book: selectedBook })
+    try {
+      const bookForSubmit = uploadSchema.parse({ ...selectedBook, price })
+      selectedBook && (await trigger({ book: bookForSubmit }))
+    } catch (e) {
+      alert(e)
+    }
   }
 
   return (
@@ -101,7 +110,6 @@ const Page = () => {
             <div className="mt-4 flex flex-wrap gap-5">
               {books.map((book, index) => {
                 const title = book.volumeInfo.title
-                console.log("title", title)
                 const authors = book.volumeInfo?.authors
                 const image = book.volumeInfo?.imageLinks?.thumbnail
 

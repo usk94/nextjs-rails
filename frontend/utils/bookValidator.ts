@@ -8,3 +8,13 @@ export const zBook = z.object({
   image: z.string(),
 })
 export const zBooks = z.array(zBook)
+
+export const uploadSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  author: z.string().optional(),
+  page_count: z.number().optional(),
+  image: z.string().optional(),
+  price: z.number(),
+  published_at: z.string().optional(),
+})
