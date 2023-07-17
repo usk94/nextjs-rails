@@ -1,5 +1,5 @@
+import { zBook } from "@/utils/bookValidator"
 import Image from "next/image"
-import { zBook } from "@/types"
 
 const getBook = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${id}/`)

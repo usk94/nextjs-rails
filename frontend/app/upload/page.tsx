@@ -1,8 +1,10 @@
 "use client"
 
-import { Book } from "@/types"
+import { Book, GoogleApiBook } from "@/types"
 import { useState } from "react"
 import useSWRMutation from "swr/mutation"
+
+const maxResults = 5
 
 const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } }) => {
   await fetch(url, {
@@ -15,14 +17,30 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } 
 
 const Page = () => {
   const { trigger, isMutating } = useSWRMutation("/api/user", updateBook)
-  const [value, setValue] = useState("")
+  const [searchWord, setSearchWord] = useState("")
+  const [books, setBooks] = useState<GoogleApiBook[]>([])
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
+    setSearchWord(e.target.value)
   }
 
-  const handleClickAddButton = async () => {
-    console.log("here!")
+  const searchBooks = async () => {
+    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchWord}&maxResults=${maxResults}`)
+    const json = await res.json()
+
+    setBooks(json.items)
+  }
+
+  const selectBook = async (book: GoogleApiBook) => {
+    setSelectedBook({
+      title: book.volumeInfo.title,
+      description: book.volumeInfo.description,
+      author: book.volumeInfo.authors[0],
+      page_count: book.volumeInfo.pageCount,
+      published_at: book.volumeInfo.publishedDate,
+      image: book.volumeInfo.imageLinks.thumbnail,
+    })
   }
 
   const handleClickSubmitButton = async () => {
@@ -50,14 +68,30 @@ const Page = () => {
             </div>
             <button
               type="button"
-              onClick={handleClickAddButton}
+              onClick={searchBooks}
               disabled={isMutating}
               className="ml-3 rounded border border-gray px-4 py-2 text-base font-semibold leading-none"
             >
-              追加
+              検索する
             </button>
           </div>
         </div>
+
+        <div className="flex flex-wrap gap-5">
+          {books.map((book, index) => (
+            <button type="button" className="flex" key={index} onClick={() => selectBook(book)}>
+              {/* TODO: next/imageにする */}
+              <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+              <div className="flex flex-col">
+                <p>{book.volumeInfo.title}</p>
+                <p>{book.volumeInfo.authors[0]}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* 代金設定コンポーネント */}
+
         <button type="button" onClick={handleClickSubmitButton} className="ml-3 rounded border border-gray px-4 py-2 text-base font-semibold leading-none w-24">
           submit!
         </button>
