@@ -21,7 +21,7 @@ const Page = () => {
     updateBook
   )
   const [searchWord, setSearchWord] = useState("")
-  const [books, setBooks] = useState(
+  const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
       volumeInfo: {
         title: "",
@@ -31,7 +31,7 @@ const Page = () => {
       },
     })
   )
-
+  const [price, setPrice] = useState(0)
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,17 +59,19 @@ const Page = () => {
     })
   }
 
-  const handleChangePriceInput = () => {}
+  const handleChangePriceInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(Number(e.target.value))
+  }
 
   const handleSubmit = async () => {
-    alert("here2!")
+    alert(selectedBook?.title)
   }
 
   return (
     <div className="bg-neutral w-screen h-screen">
       <div className="flex flex-col p-12">
         <div>
-          <h2 className="text-xl font-semibold">本を調べて、料金を設定して、保存しよう</h2>
+          <h2 className="text-xl font-semibold">本を仕入れて、本棚に保管しよう</h2>
           <p className="mt-2 text-sm font-light">
             好きな本のタイトルもしくは著者を入力して、検索してください。
           </p>
@@ -93,34 +95,39 @@ const Page = () => {
           </div>
         </div>
 
-        {books &&
-          (books.length > 0 ? (
-            <Fragment>
-              <div className="mt-4 flex flex-wrap gap-5">
-                {books.map((book, index) => (
+        {books.length > 0 ? (
+          <Fragment>
+            <div className="mt-4 flex flex-wrap gap-5">
+              {books.map((book, index) => {
+                const title = book.volumeInfo.title
+                console.log("title", title)
+                const authors = book.volumeInfo?.authors
+                const image = book.volumeInfo?.imageLinks?.thumbnail
+
+                return (
                   <button
-                    type="button"
-                    className="flex flex-col bg-white border border-solid border-black w-60"
                     key={index}
+                    type="button"
+                    className={`flex flex-col bg-white border border-solid border-black w-60 ${
+                      !!title ? "" : "cursor-default"
+                    }`}
+                    disabled={!title}
                     onClick={() => selectBook(book)}
                   >
                     {/* TODO: next/imageにする */}
-                    {book.volumeInfo?.imageLinks?.thumbnail && (
-                      <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-                    )}
+                    {<img src={image ?? "/noImage.jpg"} alt={title} />}
                     <div className="text-sm">
-                      <p>{book.volumeInfo.title}</p>
-                      {book.volumeInfo.authors && book.volumeInfo.authors.length > 0 && (
-                        <p>{book.volumeInfo.authors[0]}</p>
-                      )}
+                      {title && <p>{title}</p>}
+                      {authors && authors.length > 0 && <p>{authors[0]}</p>}
                     </div>
                   </button>
-                ))}
-              </div>
-            </Fragment>
-          ) : (
-            <p>検索の結果、該当する本が見つかりませんでした。</p>
-          ))}
+                )
+              })}
+            </div>
+          </Fragment>
+        ) : (
+          <p>検索の結果、該当する本が見つかりませんでした。</p>
+        )}
         <div className="flex flex-col mt-6">
           <div className="flex flex-col">
             <p className="mt-2 text-sm font-light">
@@ -132,6 +139,7 @@ const Page = () => {
             <input
               type="text"
               inputMode="numeric"
+              onChange={handleChangePriceInput}
               className="h-10 border border-gray-lighter p-2 font-light focus:outline-none w-24"
             />
             <span className="ml-2 flex items-center justify-center text-lg">🐚</span>
