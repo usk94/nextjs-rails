@@ -131,8 +131,8 @@ const Page = () => {
         <div className="flex flex-col mt-6">
           <div className="flex flex-col">
             <p className="mt-2 text-sm font-light">
-              一冊選択したあと、本の料金を1🐚〜1000🐚で設定してください（このサービスでの通貨は貝殻
-              🐚 です）
+              一冊選択したあと、本の料金を1💎〜100💎で設定してください（このサービスでの通貨はダイヤ
+              💎 です）
             </p>
           </div>
           <div className="mt-4 flex">
@@ -142,7 +142,7 @@ const Page = () => {
               onChange={handleChangePriceInput}
               className="h-10 border border-gray-lighter p-2 font-light focus:outline-none w-24"
             />
-            <span className="ml-2 flex items-center justify-center text-lg">🐚</span>
+            <span className="ml-2 flex items-center justify-center text-lg">💎</span>
           </div>
         </div>
         <button
