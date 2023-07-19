@@ -9,8 +9,21 @@ const getBook = async (id: string) => {
   }
 
   const data = await res.json()
-  const book = bookSchema.parse(data.book)
-  return book
+  const result = bookSchema.safeParse(data.book)
+
+  if (result.success) {
+    return result.data
+  }
+
+  return {
+    title: "",
+    description: null,
+    author: null,
+    page_count: null,
+    image: null,
+    published_at: null,
+    price: 0,
+  }
 }
 
 const Page = async ({ params }: { params: { id: string } }) => {
