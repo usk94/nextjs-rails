@@ -124,6 +124,18 @@ const Page = () => {
               const authors = book.volumeInfo?.authors
               const image = book.volumeInfo?.imageLinks?.thumbnail
               const description = book.volumeInfo?.description
+              const publishedDate = book.volumeInfo?.publishedDate
+
+              const isSelected = () => {
+                if (!selectedBook) return false
+
+                if (selectedBook.title !== title) return false
+                if (selectedBook.description && selectedBook.description !== description) return false
+                if (selectedBook.image && selectedBook.image !== image) return false
+                if (selectedBook.published_at && selectedBook.published_at !== publishedDate) return false
+
+                return true
+              }
 
               return (
                 <button
@@ -131,20 +143,22 @@ const Page = () => {
                   type="button"
                   className={`flex items-center p-2 justify-center flex-col border border-solid border-gray-light w-52 h-52 ${
                     !!title ? "" : "cursor-default"
-                  } ${selectedBook?.description === description ? "bg-secondary-light" : "bg-white"}`}
+                  } ${isSelected() ? "bg-secondary-light" : "bg-white"}`}
                   disabled={!title}
                   onClick={() => selectBook(book)}
                 >
                   {/* TODO: next/imageにする */}
-                  {image ? (
-                    <img src={image} alt={title} className="max-h-3/5" />
+                  {title ? (
+                    <>
+                      <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
+                      <div className="text-sm mt-2">
+                        {title && <p>{title}</p>}
+                        {authors && authors.length > 0 && <p>{authors[0]}</p>}
+                      </div>
+                    </>
                   ) : (
                     <MenuBook className="text-gray w-32 h-32" />
                   )}
-                  <div className="text-sm mt-2">
-                    {title && <p>{title}</p>}
-                    {authors && authors.length > 0 && <p>{authors[0]}</p>}
-                  </div>
                 </button>
               )
             })}
