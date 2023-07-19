@@ -9,10 +9,14 @@ module.exports = {
       neutral: "#FAFDF7",
       black: "#000000",
       white: "#FFFFFF",
+      gray: "#999999",
     },
     minWidth: {
       "1/2": "50%",
       "2/5": "40%",
+    },
+    maxHeight: {
+      "3/5": "60%",
     },
     extend: {
       backgroundImage: {
