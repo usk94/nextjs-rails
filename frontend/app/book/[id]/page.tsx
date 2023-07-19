@@ -1,5 +1,6 @@
 import { bookSchema } from "@/utils/bookValidator"
 import Image from "next/image"
+import Link from "next/link"
 
 const getBook = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${id}/`)
@@ -51,6 +52,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
+      <Link href="" className={`mt-6 text-white rounded px-4 py-2 text-base leading-none w-48 bg-primary`}>
+        カートに進む
+      </Link>
     </div>
   )
 }
