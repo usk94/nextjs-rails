@@ -151,7 +151,7 @@ const Page = () => {
               onChange={handleChangePriceInput}
               className="h-10 border border-gray-lighter p-2 font-light focus:outline-none w-24"
             />
-            <span className="ml-2 flex items-center justify-center text-lg">💎</span>
+            <span className="ml-1 flex items-center justify-center text-lg">💎</span>
           </div>
         </div>
         <button
