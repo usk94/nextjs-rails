@@ -56,11 +56,11 @@ const Page = () => {
   const selectBook = async (book: GoogleApiBook) => {
     setSelectedBook({
       title: book.volumeInfo.title,
-      description: book.volumeInfo.description,
-      author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : "",
-      page_count: book.volumeInfo.pageCount,
-      published_at: book.volumeInfo.publishedDate,
-      image: book.volumeInfo?.imageLinks?.thumbnail ?? "",
+      description: book.volumeInfo?.description ?? null,
+      author: book.volumeInfo?.authors ? book.volumeInfo?.authors[0] : null,
+      page_count: book.volumeInfo?.pageCount ?? null,
+      published_at: book.volumeInfo?.publishedDate ?? null,
+      image: book.volumeInfo?.imageLinks?.thumbnail ?? null,
       price: 0,
     })
   }

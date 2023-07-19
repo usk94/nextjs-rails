@@ -1,4 +1,4 @@
-import { zBook } from "@/utils/bookValidator"
+import { bookSchema } from "@/utils/bookValidator"
 import Image from "next/image"
 
 const getBook = async (id: string) => {
@@ -9,7 +9,7 @@ const getBook = async (id: string) => {
   }
 
   const data = await res.json()
-  const book = zBook.parse(data.book)
+  const book = bookSchema.parse(data.book)
   return book
 }
 
