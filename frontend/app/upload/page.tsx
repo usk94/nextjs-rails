@@ -9,7 +9,7 @@ import useSWRMutation from "swr/mutation"
 
 const maxResults = 5
 
-const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } }) => {
+const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -37,7 +37,7 @@ const Page = () => {
     })
   )
   const [price, setPrice] = useState<number | null>(null)
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
+  const [selectedBook, setSelectedBook] = useState<Omit<Book, "id"> | null>(null)
   const [priceError, setPriceError] = useState("")
   const disabled = !selectedBook || !price || !!priceError
 
