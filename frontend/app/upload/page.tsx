@@ -1,16 +1,13 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
-import { uploadSchema } from "@/utils/bookValidator"
+import { priceSchema, bookSchema } from "@/utils/bookValidator"
 import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { z } from "zod"
 
 const maxResults = 5
-
-export const schema = z.number().min(1).max(100)
 
 const updateBook = async (url: string, { arg: { book } }: { arg: { book: Book } }) => {
   await fetch(url, {
@@ -75,9 +72,9 @@ const Page = () => {
       return
     }
 
-    const result = schema.safeParse(Number(e.target.value))
+    const result = priceSchema.safeParse(Number(e.target.value))
     if (result.success) {
-      setPrice(Number(e.target.value))
+      setPrice(result.data)
       priceError && setPriceError("")
       return
     }
@@ -85,12 +82,13 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    try {
-      const bookForSubmit = uploadSchema.parse({ ...selectedBook, price })
-      selectedBook && (await trigger({ book: bookForSubmit }))
-    } catch (e) {
-      alert(e)
+    const result = bookSchema.safeParse({ ...selectedBook, price })
+    if (result.success) {
+      selectedBook && (await trigger({ book: result.data }))
+      return
     }
+    // TODO: radix-uiのsnackbar使う
+    alert("保存に失敗しました。再度お試しください")
   }
 
   return (

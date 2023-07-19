@@ -9,7 +9,7 @@ export const zBook = z.object({
 })
 export const zBooks = z.array(zBook)
 
-export const uploadSchema = z.object({
+export const bookSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
   author: z.string().optional(),
@@ -18,3 +18,5 @@ export const uploadSchema = z.object({
   price: z.number(),
   published_at: z.string().optional(),
 })
+
+export const priceSchema = z.number().min(1).max(100)
