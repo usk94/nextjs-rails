@@ -111,14 +111,14 @@ const Page = () => {
                 <button
                   key={index}
                   type="button"
-                  className={`flex items-center px-2 justify-center flex-col bg-white border border-solid border-gray w-60 h-60 ${
+                  className={`flex items-center p-2 justify-center flex-col bg-white border border-solid border-gray w-60 h-60 ${
                     !!title ? "" : "cursor-default"
                   }`}
                   disabled={!title}
                   onClick={() => selectBook(book)}
                 >
                   {/* TODO: next/imageにする */}
-                  {image ? <img src={image} alt={title} className="max-h-3/5" /> : <MenuBook className="text-gray w-40 h-40" />}
+                  {image ? <img src={image} alt={title} className="max-h-3/5" /> : <MenuBook className="text-gray w-32 h-32" />}
                   <div className="text-sm mt-2">
                     {title && <p>{title}</p>}
                     {authors && authors.length > 0 && <p>{authors[0]}</p>}
