@@ -1,11 +1,12 @@
 export type Book = {
+  id: string
   title: string
-  description?: string
-  author?: string
-  page_count?: number
-  image?: string
+  description: string | null
+  author: string | null
+  page_count: number | null
+  image: string | null
   price: number
-  published_at?: string
+  published_at: string | null
 }
 
 export type GoogleApiBook = {

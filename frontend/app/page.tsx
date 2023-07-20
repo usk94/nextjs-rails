@@ -15,10 +15,12 @@ const getBooks = async () => {
 const Page = async () => {
   const { books } = await getBooks()
   return (
-    <div className="bg-neutral flex flex-wrap">
-      {books.map((book: Book) => {
-        return <BookCard key={book.title} book={book} />
-      })}
+    <div className="bg-neutral">
+      <div className="flex flex-wrap">
+        {books.map((book: Book) => {
+          return <BookCard key={book.title} book={book} />
+        })}
+      </div>
     </div>
   )
 }
