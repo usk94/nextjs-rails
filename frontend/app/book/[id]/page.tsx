@@ -40,6 +40,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <p className="text-lg font-medium">{book.title}</p>
             <p className="mt-1 text-sm">{book.description}</p>
             <p className="mt-4 text-sm">{book.author} (著)</p>
+            <p className="mt-1 text-sm">出版日: {book.published_at}</p>
             <p className="mt-1 text-sm">{book.page_count}ページ</p>
           </div>
         </div>
