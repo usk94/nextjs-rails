@@ -92,8 +92,8 @@ const Page = () => {
   }
 
   return (
-    <div className="bg-neutral w-screen h-screen">
-      <div className="flex flex-col p-12">
+    <div className="w-screen h-screen">
+      <div className="flex flex-col px-12 pt-6">
         <div>
           <h1 className="text-2xl font-semibold">本を選んで、本棚に保管しよう</h1>
           <p className="mt-2">好きな本のタイトル、もしくは著者で検索をしてください。</p>

@@ -31,8 +31,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const book = await getBook(params.id)
 
   return (
-    <div className="bg-neutral w-screen h-screen flex flex-col items-center justify-center">
-      <div className="flex flex-col bg-white w-1/2 rounded-xl p-6 m-4 shadow-md">
+    <div className="w-screen h-screen flex flex-col items-center">
+      <div className="flex flex-col bg-white w-1/2 rounded-xl p-6 mx-4 mt-8 shadow-md">
         <div className="bg-secondary-light flex p-4">
           <img src={book.image || "/noImage.jpg"} alt={book.title} className="w-30 h-52" />
           <div className="ml-4">
@@ -49,7 +49,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       </div>
       <Link
         href=""
-        className="mt-2 bg-primary text-white rounded px-4 py-1 flex items-center justify-center h-8 font-medium"
+        className="mt-6 bg-primary text-white rounded px-4 py-1 flex items-center justify-center w-72 h-8 font-medium"
       >
         カートに進む
       </Link>
