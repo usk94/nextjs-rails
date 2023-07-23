@@ -141,9 +141,9 @@ const Page = () => {
                 <button
                   key={index}
                   type="button"
-                  className={`flex items-center p-2 justify-center flex-col border border-solid border-gray-light w-52 h-52 ${
+                  className={`flex items-center p-2 justify-center flex-col border w-52 h-52 ${
                     !!title ? "" : "cursor-default"
-                  } ${isSelected() ? "bg-secondary-light" : "bg-white"}`}
+                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
                   disabled={!title}
                   onClick={() => selectBook(book)}
                 >

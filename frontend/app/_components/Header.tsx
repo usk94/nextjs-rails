@@ -3,7 +3,7 @@ import { Suspense } from "react"
 
 export const Header: React.FC = () => {
   return (
-    <div className="border-b border-secondary pb-2 max-w-screen-2xl px-2 md:px-4 mx-auto">
+    <div className="bg-secondary-light pb-2 max-w-screen-2xl px-2 md:px-4 mx-auto">
       <header className="flex justify-between items-center py-4">
         <Link href="/" className="inline-flex items-center text-black-800 text-xl font-bold gap-2.5" aria-label="logo">
           みんなの本屋さん
