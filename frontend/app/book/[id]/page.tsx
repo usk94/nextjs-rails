@@ -49,7 +49,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       </div>
       <Link
         href=""
-        className="mt-6 bg-primary text-white rounded px-4 py-1 flex items-center justify-center h-8 font-medium"
+        className="mt-2 bg-primary text-white rounded px-4 py-1 flex items-center justify-center h-8 font-medium"
       >
         カートに進む
       </Link>
