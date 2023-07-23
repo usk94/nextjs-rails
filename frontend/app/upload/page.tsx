@@ -6,6 +6,7 @@ import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
+import { Snackbar } from "@mui/material"
 
 const maxResults = 5
 
@@ -40,6 +41,7 @@ const Page = () => {
   const [selectedBook, setSelectedBook] = useState<Omit<Book, "id"> | null>(null)
   const [priceError, setPriceError] = useState("")
   const disabled = !selectedBook || !price || !!priceError
+  const [open, setOpen] = useState(false)
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
@@ -82,13 +84,14 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    const result = bookSchema.safeParse({ ...selectedBook, price })
-    if (result.success) {
-      selectedBook && (await trigger({ book: result.data }))
-      return
-    }
+    // const result = bookSchema.safeParse({ ...selectedBook, price })
+    // if (result.success) {
+    //   selectedBook && (await trigger({ book: result.data }))
+    //   return
+    // }
     // TODO: radix-uiのsnackbar使う
-    alert("保存に失敗しました。再度お試しください")
+    setOpen(true)
+    // alert("保存に失敗しました。再度お試しください")
   }
 
   return (
@@ -194,6 +197,7 @@ const Page = () => {
           保存する
         </button>
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)} message="Note archived" />
     </div>
   )
 }
