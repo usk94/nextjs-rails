@@ -32,7 +32,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="bg-neutral w-screen h-screen flex flex-col items-center justify-center">
-      <div className="flex flex-col bg-white w-1/2 rounded-xl px-6 py-4 m-4 shadow-md">
+      <div className="flex flex-col bg-white w-1/2 rounded-xl p-6 m-4 shadow-md">
         <div className="bg-secondary-light flex p-4">
           <img src={book.image || "/noImage.jpg"} alt={book.title} className="w-30 h-52" />
           <div className="ml-4">
