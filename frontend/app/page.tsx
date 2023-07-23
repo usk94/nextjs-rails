@@ -12,15 +12,19 @@ const getBooks = async () => {
   return res.json()
 }
 
+const shuffle = (books: Book[]) => {
+  books.sort(() => Math.random() - 0.5)
+}
+
 const Page = async () => {
   const { books } = await getBooks()
+  shuffle(books)
+
   return (
-    <div className="">
-      <div className="flex flex-wrap">
-        {books.map((book: Book) => {
-          return <BookCard key={book.title} book={book} />
-        })}
-      </div>
+    <div className="flex flex-wrap">
+      {books.map((book: Book) => {
+        return <BookCard key={book.title} book={book} />
+      })}
     </div>
   )
 }
