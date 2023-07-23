@@ -33,12 +33,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="w-screen h-screen flex flex-col items-center">
       <div className="flex flex-col w-1/2 p-6 mx-4 mt-8">
-        <div className="bg-secondary-lighter rounded-xl border border-secondary flex p-4">
+        <div className="bg-secondary-lighter rounded-xl border border-secondary-light flex p-4">
           <img src={book.image || "/noImage.jpg"} alt={book.title} className="w-30 h-52" />
           <div className="ml-4">
             <p className="text-lg font-medium">{book.title}</p>
             <p className="mt-1 text-sm">{book.description}</p>
-            <p className="mt-4 text-sm">著者: {book.author}</p>
+            <p className="mt-4 text-sm">{book.author} (著)</p>
             <p className="mt-1 text-sm">{book.page_count}ページ</p>
           </div>
         </div>

@@ -6,7 +6,7 @@ const BookCard = ({ book }: { book: Book }) => {
   return (
     <Link
       href={`book/${book.id}`}
-      className="bg-secondary-lighter border border-secondary flex rounded-xl w-72 h-48 m-5 p-4 items-center shadow-md"
+      className="bg-secondary-lighter border border-secondary-light flex rounded-xl w-72 h-48 m-5 p-4 items-center shadow-md"
     >
       {/* TODO: next/imageにする */}
       <img src={book.image || "/noImage.jpg"} alt={book.title} width={100} height={150} className="min-w-2/5" />

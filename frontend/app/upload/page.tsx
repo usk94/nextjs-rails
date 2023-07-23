@@ -95,7 +95,7 @@ const Page = () => {
     <div className="w-screen h-screen">
       <div className="flex flex-col px-12 pt-6">
         <div>
-          <h1 className="text-2xl font-semibold">本を選んで、本棚に保管しよう</h1>
+          <h1 className="text-xl font-semibold">本を選んで、本棚に保管しよう</h1>
           <p className="mt-2">好きな本のタイトル、もしくは著者で検索をしてください。</p>
           <div className="mt-4 flex">
             <div className="grow-2 leading-none">
@@ -141,7 +141,7 @@ const Page = () => {
                 <button
                   key={index}
                   type="button"
-                  className={`flex items-center p-2 justify-center flex-col border w-52 h-52 ${
+                  className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
                     !!title ? "" : "cursor-default"
                   } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
                   disabled={!title}
