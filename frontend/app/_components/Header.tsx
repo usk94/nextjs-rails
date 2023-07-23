@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
         みんなの本屋さん
       </Link>
       <nav className="flex gap-12 mr-6">
-        <Link href="/upload">本を棚に置く</Link>
+        <Link href="/upload">棚に並べる</Link>
         <Link href="/mypage">
           <AccountCircleIcon />
         </Link>
