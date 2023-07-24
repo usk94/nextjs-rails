@@ -1,7 +1,7 @@
 import { Book } from "@/types"
 import Image from "next/image"
-import BookCard from "./_components/bookCard"
 import { booksSchema } from "@/utils/bookValidator"
+import BookCard from "./_components/bookCard"
 
 const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
