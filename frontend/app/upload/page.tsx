@@ -6,6 +6,10 @@ import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
+import { Alert, Snackbar } from "@mui/material"
+import { useRouter } from "next/navigation"
+import { useDispatch } from "react-redux"
+import { open } from "@/redux/snackbarSlice"
 
 const maxResults = 5
 
@@ -40,6 +44,8 @@ const Page = () => {
   const [selectedBook, setSelectedBook] = useState<Omit<Book, "id"> | null>(null)
   const [priceError, setPriceError] = useState("")
   const disabled = !selectedBook || !price || !!priceError
+  const dispatch = useDispatch()
+  const router = useRouter()
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
@@ -82,20 +88,23 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    const result = bookSchema.safeParse({ ...selectedBook, price })
-    if (result.success) {
-      selectedBook && (await trigger({ book: result.data }))
-      return
-    }
+    // const result = bookSchema.safeParse({ ...selectedBook, price })
+    // if (result.success) {
+    //   selectedBook && (await trigger({ book: result.data }))
+    //   return
+    // }
     // TODO: radix-uiのsnackbar使う
-    alert("保存に失敗しました。再度お試しください")
+    router.push("/")
+    dispatch(open())
+
+    // alert("保存に失敗しました。再度お試しください")
   }
 
   return (
-    <div className="bg-neutral w-screen h-screen">
-      <div className="flex flex-col p-12">
+    <div className="w-screen h-screen">
+      <div className="flex flex-col px-12 pt-6">
         <div>
-          <h1 className="text-2xl font-semibold">本を選んで、本棚に保管しよう</h1>
+          <h1 className="text-xl font-semibold">本を選んで、本棚に保管しよう</h1>
           <p className="mt-2">好きな本のタイトル、もしくは著者で検索をしてください。</p>
           <div className="mt-4 flex">
             <div className="grow-2 leading-none">
@@ -141,9 +150,9 @@ const Page = () => {
                 <button
                   key={index}
                   type="button"
-                  className={`flex items-center p-2 justify-center flex-col border border-solid border-gray-light w-52 h-52 ${
+                  className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
                     !!title ? "" : "cursor-default"
-                  } ${isSelected() ? "bg-secondary-light" : "bg-white"}`}
+                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
                   disabled={!title}
                   onClick={() => selectBook(book)}
                 >

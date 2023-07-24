@@ -1,6 +1,7 @@
 import { Book } from "@/types"
 import Image from "next/image"
-import BookCard from "./_components/BookCard"
+import { booksSchema } from "@/utils/bookValidator"
+import BookCard from "./_components/bookCard"
 
 const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
@@ -9,18 +10,29 @@ const getBooks = async () => {
     throw new Error("Failed to fetch data")
   }
 
-  return res.json()
+  const data = await res.json()
+  const result = booksSchema.safeParse(data.books)
+
+  if (!result.success) {
+    return []
+  }
+
+  return result.data
+}
+
+const shuffle = (books: Book[]) => {
+  books.sort(() => Math.random() - 0.5)
 }
 
 const Page = async () => {
-  const { books } = await getBooks()
+  const books = await getBooks()
+  shuffle(books)
+
   return (
-    <div className="bg-neutral">
-      <div className="flex flex-wrap">
-        {books.map((book: Book) => {
-          return <BookCard key={book.title} book={book} />
-        })}
-      </div>
+    <div className="flex flex-wrap">
+      {books.map((book: Book) => {
+        return <BookCard key={book.title} book={book} />
+      })}
     </div>
   )
 }

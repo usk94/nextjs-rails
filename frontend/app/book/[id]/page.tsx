@@ -12,49 +12,47 @@ const getBook = async (id: string) => {
   const data = await res.json()
   const result = bookSchema.safeParse(data.book)
 
-  if (result.success) {
-    return result.data
+  if (!result.success) {
+    return {
+      id: "",
+      title: "",
+      description: null,
+      author: null,
+      page_count: null,
+      image: null,
+      published_at: null,
+      price: 0,
+    }
   }
 
-  return {
-    title: "",
-    description: null,
-    author: null,
-    page_count: null,
-    image: null,
-    published_at: null,
-    price: 0,
-  }
+  return result.data
 }
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const book = await getBook(params.id)
 
   return (
-    <div className="bg-neutral">
-      <div className="flex flex-col">
-        <p className="mt-2 text-sm font-light"></p>
-        <div className="bg-secondary-light flex rounded-xl m-5 p-4">
-          <Image
-            src={book.image || "/noImage.jpg"}
-            alt={book.title}
-            width={100}
-            height={150}
-            className="h-auto w-auto"
-          />
-          <div className="flex flex-col max-w-40">
-            <p>{book.title}</p>
-            <p>{book.description}</p>
-            <p>著者: {book.author}</p>
-            <p>{book.page_count}ページ</p>
+    <div className="w-screen h-screen flex flex-col items-center">
+      <div className="flex flex-col w-1/2 p-6 mx-4 mt-8">
+        <div className="bg-secondary-lighter rounded-xl border border-secondary-light flex p-4">
+          <img src={book.image || "/noImage.jpg"} alt={book.title} className="w-30 h-52" />
+          <div className="ml-4">
+            <p className="text-lg font-medium">{book.title}</p>
+            <p className="mt-1 text-sm">{book.description}</p>
+            <p className="mt-4 text-sm">{book.author} (著)</p>
+            <p className="mt-1 text-sm">出版日: {book.published_at}</p>
+            <p className="mt-1 text-sm">{book.page_count}ページ</p>
           </div>
         </div>
-        <p>料金: {book.price}💎</p>
-        <p className="text-sm">
+        <p className="mt-4 text-base">価格: {book.price}💎</p>
+        <p className="mt-1 text-xs text-gray-700">
           本の料金は1💎〜100💎でランダムに設定されています（このサービスでの通貨はダイヤ 💎 です）
         </p>
       </div>
-      <Link href="" className="mt-6 text-white rounded px-4 py-2 text-base leading-none w-48 bg-primary">
+      <Link
+        href=""
+        className="mt-6 bg-primary text-white rounded px-4 py-1 flex items-center justify-center w-72 h-8 font-medium"
+      >
         カートに進む
       </Link>
     </div>
