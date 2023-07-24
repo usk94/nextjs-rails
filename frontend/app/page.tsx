@@ -1,6 +1,6 @@
 import { Book } from "@/types"
 import Image from "next/image"
-import BookCard from "./_components/BookCard"
+import BookCard from "./_components/bookCard"
 import { booksSchema } from "@/utils/bookValidator"
 
 const getBooks = async () => {
