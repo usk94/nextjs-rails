@@ -10,10 +10,14 @@ import { Alert, Snackbar } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
+import { toast } from "react-hot-toast"
 
 const maxResults = 5
 
-const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
+const updateBook = async (
+  url: string,
+  { arg: { book } }: { arg: { book: Omit<Book, "id"> } }
+) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,7 +30,10 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Bo
 }
 
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updateBook)
+  const { trigger, isMutating } = useSWRMutation(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`,
+    updateBook
+  )
   const [searchWord, setSearchWord] = useState("")
   const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
@@ -41,7 +48,9 @@ const Page = () => {
     })
   )
   const [price, setPrice] = useState<number | null>(null)
-  const [selectedBook, setSelectedBook] = useState<Omit<Book, "id"> | null>(null)
+  const [selectedBook, setSelectedBook] = useState<Omit<Book, "id"> | null>(
+    null
+  )
   const [priceError, setPriceError] = useState("")
   const disabled = !selectedBook || !price || !!priceError
   const dispatch = useDispatch()
@@ -52,7 +61,9 @@ const Page = () => {
   }
 
   const searchBooks = async () => {
-    const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchWord}&maxResults=${maxResults}`)
+    const res = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${searchWord}&maxResults=${maxResults}`
+    )
     const json = await res.json()
 
     const books = json.items && json.items.length > 0 ? json.items : []
@@ -94,8 +105,13 @@ const Page = () => {
     //   return
     // }
     // TODO: radix-uiのsnackbar使う
+    toast.promise(console.log("here"), {
+      loading: "保存中...",
+      success: <b>保存しました！</b>,
+      error: <b>保存に失敗しました。再度お試しください</b>,
+    })
     router.push("/")
-    dispatch(open())
+    // dispatch(open())
 
     // alert("保存に失敗しました。再度お試しください")
   }
@@ -104,8 +120,12 @@ const Page = () => {
     <div className="w-screen h-screen">
       <div className="flex flex-col px-12 pt-6">
         <div>
-          <h1 className="text-xl font-semibold">本を選んで、本棚に保管しよう</h1>
-          <p className="mt-2">好きな本のタイトル、もしくは著者で検索をしてください。</p>
+          <h1 className="text-xl font-semibold">
+            本を選んで、本棚に保管しよう
+          </h1>
+          <p className="mt-2">
+            好きな本のタイトル、もしくは著者で検索をしてください。
+          </p>
           <div className="mt-4 flex">
             <div className="grow-2 leading-none">
               <input
@@ -139,9 +159,18 @@ const Page = () => {
                 if (!selectedBook) return false
 
                 if (selectedBook.title !== title) return false
-                if (selectedBook.description && selectedBook.description !== description) return false
-                if (selectedBook.image && selectedBook.image !== image) return false
-                if (selectedBook.published_at && selectedBook.published_at !== publishedDate) return false
+                if (
+                  selectedBook.description &&
+                  selectedBook.description !== description
+                )
+                  return false
+                if (selectedBook.image && selectedBook.image !== image)
+                  return false
+                if (
+                  selectedBook.published_at &&
+                  selectedBook.published_at !== publishedDate
+                )
+                  return false
 
                 return true
               }
@@ -152,14 +181,22 @@ const Page = () => {
                   type="button"
                   className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
                     !!title ? "" : "cursor-default"
-                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
+                  } ${
+                    isSelected()
+                      ? "bg-secondary-light border-secondary"
+                      : "bg-white border-gray-light"
+                  }`}
                   disabled={!title}
                   onClick={() => selectBook(book)}
                 >
                   {/* TODO: next/imageにする */}
                   {title ? (
                     <>
-                      <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
+                      <img
+                        src={image || "/noImage.jpg"}
+                        alt={title}
+                        className="max-h-3/5"
+                      />
                       <div className="text-sm mt-2">
                         {title && <p>{title}</p>}
                         {authors && authors.length > 0 && <p>{authors[0]}</p>}
@@ -178,7 +215,8 @@ const Page = () => {
         <div className="flex flex-col mt-6">
           <div className="flex flex-col">
             <p className="mt-2">
-              一冊選択したあと、本の料金を1💎〜100💎で設定してください（このサービスでの通貨はダイヤ 💎 です）
+              一冊選択したあと、本の料金を1💎〜100💎で設定してください（このサービスでの通貨はダイヤ
+              💎 です）
             </p>
           </div>
           <div className="mt-4 flex items-center">
@@ -188,8 +226,12 @@ const Page = () => {
               onChange={handleChangePriceInput}
               className="h-10 border border-gray-light p-2 font-light focus:outline-none w-24"
             />
-            <span className="ml-1 flex items-center justify-center text-lg">💎</span>
-            {priceError && <span className="ml-2 text-sm text-attention">{priceError}</span>}
+            <span className="ml-1 flex items-center justify-center text-lg">
+              💎
+            </span>
+            {priceError && (
+              <span className="ml-2 text-sm text-attention">{priceError}</span>
+            )}
           </div>
         </div>
         <button
