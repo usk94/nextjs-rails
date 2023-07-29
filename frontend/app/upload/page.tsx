@@ -1,8 +1,8 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
-import { priceSchema, bookSchema } from "@/utils/bookValidator"
-import { Suspense, useState } from "react"
+import { priceSchema, bookSchemaWithoutId } from "@/utils/bookValidator"
+import { Suspense, useCallback, useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
@@ -13,7 +13,7 @@ import Skeleton from "../_components/skeleton"
 
 const maxResults = 5
 
-const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
+const updater = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,7 +26,7 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Bo
 }
 
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updateBook)
+  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updater)
   const [searchWord, setSearchWord] = useState("")
   const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
@@ -46,6 +46,12 @@ const Page = () => {
   const disabled = !selectedBook || !price || !!priceError
   const dispatch = useDispatch()
   const router = useRouter()
+  const createQueryString = useCallback((name: string) => {
+    const params = new URLSearchParams("")
+    params.set(name, "")
+
+    return params.toString()
+  }, [])
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
@@ -80,7 +86,7 @@ const Page = () => {
 
     const result = priceSchema.safeParse(Number(e.target.value))
     if (result.success) {
-      setPrice(result.data)
+      setPrice(Number(result.data))
       priceError && setPriceError("")
       return
     }
@@ -88,14 +94,18 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    const result = bookSchema.safeParse({ ...selectedBook, price })
+    const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
     if (result.success) {
       selectedBook && (await trigger({ book: result.data }))
+      router.push("/" + "?" + createQueryString("uploaded"))
+      setTimeout(() => {
+        dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
+      }, 500)
       return
     }
-    router.push("/")
+
     setTimeout(() => {
-      dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
+      dispatch(open({ severity: "error", text: "本の保存に失敗しました。再度お試しください。" }))
     }, 500)
   }
 
