@@ -21,3 +21,5 @@ export type GoogleApiBook = {
     publishedDate?: string
   }
 }
+
+export type SnackbarSeverity = "success" | "info" | "warning" | "error"

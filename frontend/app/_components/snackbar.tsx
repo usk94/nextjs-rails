@@ -16,8 +16,8 @@ const Snackbar = () => {
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       key={"top" + "center"}
     >
-      <Alert onClose={() => dispatch(close())} severity="info" sx={{ width: "100%" }}>
-        本を棚に積めました！
+      <Alert onClose={() => dispatch(close())} severity={snackbarState.severity} sx={{ width: "100%" }}>
+        {snackbarState.text}
       </Alert>
     </MuiSnackbar>
   )
