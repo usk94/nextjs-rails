@@ -12,8 +12,9 @@ const Snackbar = () => {
   return (
     <MuiSnackbar
       open={snackbarState.isOpen}
-      autoHideDuration={6000}
+      autoHideDuration={4000}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      onClose={() => dispatch(close())}
       key={"top" + "center"}
     >
       <Alert onClose={() => dispatch(close())} severity={snackbarState.severity} sx={{ width: "100%" }}>
