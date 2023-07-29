@@ -95,8 +95,6 @@ const Page = () => {
     // }
     router.push("/")
     dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
-
-    // alert("保存に失敗しました。再度お試しください")
   }
 
   return (
