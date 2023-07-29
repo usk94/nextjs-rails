@@ -93,7 +93,6 @@ const Page = () => {
     //   selectedBook && (await trigger({ book: result.data }))
     //   return
     // }
-    // TODO: radix-uiのsnackbar使う
     router.push("/")
     dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
 
