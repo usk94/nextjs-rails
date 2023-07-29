@@ -2,7 +2,7 @@
 
 import { Book, GoogleApiBook } from "@/types"
 import { priceSchema, bookSchema } from "@/utils/bookValidator"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
@@ -10,6 +10,7 @@ import { Alert, Snackbar } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
+import Skeleton from "../_components/skeleton"
 
 const maxResults = 5
 
@@ -146,28 +147,29 @@ const Page = () => {
               }
 
               return (
-                <button
-                  key={index}
-                  type="button"
-                  className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
-                    !!title ? "" : "cursor-default"
-                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
-                  disabled={!title}
-                  onClick={() => selectBook(book)}
-                >
-                  {/* TODO: next/imageにする */}
-                  {title ? (
-                    <>
-                      <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
-                      <div className="text-sm mt-2">
-                        {title && <p>{title}</p>}
-                        {authors && authors.length > 0 && <p>{authors[0]}</p>}
-                      </div>
-                    </>
-                  ) : (
-                    <MenuBook className="text-gray w-32 h-32" />
-                  )}
-                </button>
+                <Suspense key={index} fallback={<Skeleton width={208} height={208} />}>
+                  <button
+                    type="button"
+                    className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
+                      !!title ? "" : "cursor-default"
+                    } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
+                    disabled={!title}
+                    onClick={() => selectBook(book)}
+                  >
+                    {/* TODO: next/imageにする */}
+                    {title ? (
+                      <>
+                        <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
+                        <div className="text-sm mt-2">
+                          {title && <p>{title}</p>}
+                          {authors && authors.length > 0 && <p>{authors[0]}</p>}
+                        </div>
+                      </>
+                    ) : (
+                      <MenuBook className="text-gray w-32 h-32" />
+                    )}
+                  </button>
+                </Suspense>
               )
             })}
           </div>
