@@ -6,7 +6,6 @@ import { Suspense, useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { Alert, Snackbar } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
@@ -89,11 +88,11 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    // const result = bookSchema.safeParse({ ...selectedBook, price })
-    // if (result.success) {
-    //   selectedBook && (await trigger({ book: result.data }))
-    //   return
-    // }
+    const result = bookSchema.safeParse({ ...selectedBook, price })
+    if (result.success) {
+      selectedBook && (await trigger({ book: result.data }))
+      return
+    }
     router.push("/")
     setTimeout(() => {
       dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
