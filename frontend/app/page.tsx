@@ -4,7 +4,7 @@ import { booksSchema } from "@/utils/bookValidator"
 import BookCard from "./_components/bookCard"
 import { uploadedKey } from "@/utils/book"
 
-const getBooks = async (option?: { cache: RequestCache }) => {
+const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
 
   if (!res.ok) {
@@ -12,7 +12,9 @@ const getBooks = async (option?: { cache: RequestCache }) => {
   }
 
   const data = await res.json()
+  console.log("data", data)
   const result = booksSchema.safeParse(data.books)
+  console.log("result", result)
 
   if (!result.success) {
     return []
@@ -25,9 +27,9 @@ const shuffle = (books: Book[]) => {
   books.sort(() => Math.random() - 0.5)
 }
 
-const Page = async ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
-  const didUpload = Object.keys(searchParams).some((k) => k === uploadedKey)
+const Page = async () => {
   const books = await getBooks()
+  console.log("books", books)
   shuffle(books)
 
   return (
