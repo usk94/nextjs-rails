@@ -46,7 +46,7 @@ const deleter = async (url: string) => {
 }
 
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data, isLoading, error } = useSWR(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, fetcher)
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, fetcher)
   const { trigger: deleteBook } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, deleter)
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
