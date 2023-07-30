@@ -2,14 +2,13 @@
 
 import { Book, GoogleApiBook } from "@/types"
 import { priceSchema, bookSchemaWithoutId } from "@/utils/bookValidator"
-import { Suspense, useCallback, useState } from "react"
+import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
-import Skeleton from "../_components/skeleton"
 import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
