@@ -2,8 +2,6 @@ import { Book } from "@/types"
 import Image from "next/image"
 import { booksSchema } from "@/utils/bookValidator"
 import BookCard from "./_components/bookCard"
-import { Suspense } from "react"
-import Skeleton from "./_components/skeleton"
 
 const getBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
@@ -33,11 +31,7 @@ const Page = async () => {
   return (
     <div className="flex flex-wrap">
       {books.map((book: Book) => {
-        return (
-          <Suspense key={book.title} fallback={<Skeleton width={288} height={192} />}>
-            <BookCard book={book} />
-          </Suspense>
-        )
+        return <BookCard key={book.title} book={book} />
       })}
     </div>
   )
