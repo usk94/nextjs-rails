@@ -10,6 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
 import Skeleton from "../_components/skeleton"
+import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
 
@@ -91,7 +92,8 @@ const Page = () => {
     const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
     if (result.success) {
       selectedBook && (await trigger({ book: result.data }))
-      router.push("/?uploaded")
+      router.push(`/?${uploadedKey}`)
+      router.refresh()
       setTimeout(() => {
         dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
       }, 500)
