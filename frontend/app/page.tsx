@@ -4,10 +4,8 @@ import { booksSchema } from "@/utils/bookValidator"
 import BookCard from "./_components/bookCard"
 import { uploadedKey } from "@/utils/book"
 
-const getBooks = async (option: { cache: RequestCache } | undefined) => {
-  console.log("通ってる？res before")
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, option)
-  console.log("通ってる？res after", res)
+const getBooks = async (option?: { cache: RequestCache }) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
 
   if (!res.ok) {
     throw new Error("データの取得に失敗しました")
@@ -28,12 +26,8 @@ const shuffle = (books: Book[]) => {
 }
 
 const Page = async ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
-  console.log("here1")
   const didUpload = Object.keys(searchParams).some((k) => k === uploadedKey)
-  console.log("here2")
-  const option = didUpload ? ({ cache: "no-store" } as const) : undefined
-  const books = await getBooks(option)
-  console.log("here3 books", books)
+  const books = await getBooks()
   shuffle(books)
 
   return (
