@@ -1,17 +1,11 @@
 import Link from "next/link"
 import MenuBook from "@mui/icons-material/MenuBook"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
-import { Zen_Maru_Gothic } from "next/font/google"
-
-const ZenMaru = Zen_Maru_Gothic({
-  weight: "400",
-  subsets: ["latin"],
-})
 
 export const Header: React.FC = () => {
   return (
     <header className="flex justify-between items-center py-4 bg-secondary-light max-w-screen-2xl px-2 mx-auto">
-      <Link href="/" className={`inline-flex items-center text-xl font-bold gap-2.5 ml-2 ${ZenMaru.className}`}>
+      <Link href="/" className="inline-flex font-zen items-center text-xl font-bold gap-2.5 ml-2">
         <MenuBook />
         みんなの本屋さん
       </Link>
