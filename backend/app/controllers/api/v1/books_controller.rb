@@ -12,11 +12,6 @@ class Api::V1::BooksController < ApplicationController
     Book.create!(book_params)
   end
 
-  def destroy
-    book = Book.find(params[:id])
-    book.destroy!
-  end
-
   def delete_all
     Book.delete_all
   end

@@ -1,19 +1,19 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
-import { priceSchema, bookSchemaWithoutId } from "@/utils/bookValidator"
+import { priceSchema, bookSchema } from "@/utils/bookValidator"
 import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { useRouter, useSearchParams } from "next/navigation"
+import { Alert, Snackbar } from "@mui/material"
+import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
-import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
 
-const updater = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
+const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,7 +26,7 @@ const updater = async (url: string, { arg: { book } }: { arg: { book: Omit<Book,
 }
 
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updater)
+  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updateBook)
   const [searchWord, setSearchWord] = useState("")
   const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
@@ -80,7 +80,7 @@ const Page = () => {
 
     const result = priceSchema.safeParse(Number(e.target.value))
     if (result.success) {
-      setPrice(Number(result.data))
+      setPrice(result.data)
       priceError && setPriceError("")
       return
     }
@@ -88,19 +88,14 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
-    if (result.success) {
-      selectedBook && (await trigger({ book: result.data }))
-      router.push(`/?${uploadedKey}`)
-      router.refresh()
-      setTimeout(() => {
-        dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
-      }, 500)
-      return
-    }
-
+    // const result = bookSchema.safeParse({ ...selectedBook, price })
+    // if (result.success) {
+    //   selectedBook && (await trigger({ book: result.data }))
+    //   return
+    // }
+    router.push("/")
     setTimeout(() => {
-      dispatch(open({ severity: "error", text: "本の保存に失敗しました。再度お試しください。" }))
+      dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
     }, 500)
   }
 
