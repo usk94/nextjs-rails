@@ -1,5 +1,5 @@
 const Page = () => {
-  return <div>danbo!</div>
+  return <p>bkb! hiiiya!</p>
 }
 
 export default Page
