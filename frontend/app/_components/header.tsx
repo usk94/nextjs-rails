@@ -1,6 +1,7 @@
 import Link from "next/link"
 import MenuBook from "@mui/icons-material/MenuBook"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import { Suspense } from "react"
 
 export const Header: React.FC = () => {
   return (

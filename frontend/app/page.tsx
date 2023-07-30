@@ -2,6 +2,8 @@ import { Book } from "@/types"
 import Image from "next/image"
 import { booksSchema } from "@/utils/bookValidator"
 import BookCard from "./_components/bookCard"
+import { Suspense } from "react"
+import Skeleton from "./_components/skeleton"
 import { uploadedKey } from "@/utils/book"
 
 const getBooks = async (option: { cache: RequestCache } | undefined) => {

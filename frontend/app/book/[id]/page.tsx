@@ -1,9 +1,10 @@
 "use client"
 
+import Skeleton from "@/app/_components/skeleton"
 import { bookSchema } from "@/utils/bookValidator"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
 import { Menu, MenuItem } from "@mui/material"
 import useSWR from "swr"
@@ -11,7 +12,6 @@ import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
 import useSWRMutation from "swr/mutation"
 import router from "next/router"
-import { Book } from "@/types"
 
 const fetcher = async (url: string) => {
   const res = await fetch(url)
@@ -46,14 +46,14 @@ const deleter = async (url: string) => {
 }
 
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data, isLoading, error } = useSWR(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, fetcher)
+  const { data: book, error } = useSWR(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, fetcher, {
+    suspense: true,
+  })
   const { trigger: deleteBook } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${params.id}/`, deleter)
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isOpen = !!anchorEl
   const dispatch = useDispatch()
-
-  const book = data as Book
 
   if (error) {
     dispatch(open({ severity: "error", text: error.message }))
