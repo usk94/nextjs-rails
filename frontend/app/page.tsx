@@ -7,9 +7,7 @@ import Skeleton from "./_components/skeleton"
 import { uploadedKey } from "@/utils/book"
 
 const getBooks = async (option: { cache: RequestCache } | undefined) => {
-  console.log("通ってる？res before")
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, option)
-  console.log("通ってる？res after", res)
 
   if (!res.ok) {
     throw new Error("データの取得に失敗しました")
