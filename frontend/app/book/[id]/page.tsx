@@ -69,6 +69,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     try {
       await deleteBook()
       router.push("/")
+
       dispatch(open({ severity: "info", text: "本を削除しました！" }))
     } catch {
       handleClose()

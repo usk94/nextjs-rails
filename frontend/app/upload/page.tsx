@@ -6,7 +6,7 @@ import { Suspense, useCallback, useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
 import Skeleton from "../_components/skeleton"
@@ -46,6 +46,12 @@ const Page = () => {
   const disabled = !selectedBook || !price || !!priceError
   const dispatch = useDispatch()
   const router = useRouter()
+  const createQueryString = useCallback((name: string) => {
+    const params = new URLSearchParams("")
+    params.set(name, "")
+
+    return params.toString()
+  }, [])
 
   const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
@@ -91,7 +97,7 @@ const Page = () => {
     const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
     if (result.success) {
       selectedBook && (await trigger({ book: result.data }))
-      router.push("/?uploaded")
+      router.push("/" + "?" + createQueryString("uploaded"))
       setTimeout(() => {
         dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
       }, 500)
