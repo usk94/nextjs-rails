@@ -1,19 +1,20 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
-import { priceSchema, bookSchema } from "@/utils/bookValidator"
-import { useState } from "react"
+import { priceSchema, bookSchemaWithoutId } from "@/utils/bookValidator"
+import { Suspense, useCallback, useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { Alert, Snackbar } from "@mui/material"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
+import Skeleton from "../_components/skeleton"
+import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
 
-const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
+const updater = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,7 +27,7 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Bo
 }
 
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updateBook)
+  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updater)
   const [searchWord, setSearchWord] = useState("")
   const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
@@ -80,7 +81,7 @@ const Page = () => {
 
     const result = priceSchema.safeParse(Number(e.target.value))
     if (result.success) {
-      setPrice(result.data)
+      setPrice(Number(result.data))
       priceError && setPriceError("")
       return
     }
@@ -88,16 +89,20 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    // const result = bookSchema.safeParse({ ...selectedBook, price })
-    // if (result.success) {
-    //   selectedBook && (await trigger({ book: result.data }))
-    //   return
-    // }
-    // TODO: radix-uiのsnackbar使う
-    router.push("/")
-    dispatch(open())
+    const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
+    if (result.success) {
+      selectedBook && (await trigger({ book: result.data }))
+      router.push(`/?${uploadedKey}`)
+      router.refresh()
+      setTimeout(() => {
+        dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
+      }, 500)
+      return
+    }
 
-    // alert("保存に失敗しました。再度お試しください")
+    setTimeout(() => {
+      dispatch(open({ severity: "error", text: "本の保存に失敗しました。再度お試しください。" }))
+    }, 500)
   }
 
   return (
@@ -147,28 +152,29 @@ const Page = () => {
               }
 
               return (
-                <button
-                  key={index}
-                  type="button"
-                  className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
-                    !!title ? "" : "cursor-default"
-                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
-                  disabled={!title}
-                  onClick={() => selectBook(book)}
-                >
-                  {/* TODO: next/imageにする */}
-                  {title ? (
-                    <>
-                      <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
-                      <div className="text-sm mt-2">
-                        {title && <p>{title}</p>}
-                        {authors && authors.length > 0 && <p>{authors[0]}</p>}
-                      </div>
-                    </>
-                  ) : (
-                    <MenuBook className="text-gray w-32 h-32" />
-                  )}
-                </button>
+                <Suspense key={index} fallback={<Skeleton width={208} height={208} />}>
+                  <button
+                    type="button"
+                    className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
+                      !!title ? "" : "cursor-default"
+                    } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
+                    disabled={!title}
+                    onClick={() => selectBook(book)}
+                  >
+                    {/* TODO: next/imageにする */}
+                    {title ? (
+                      <>
+                        <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
+                        <div className="text-sm mt-2">
+                          {title && <p>{title}</p>}
+                          {authors && authors.length > 0 && <p>{authors[0]}</p>}
+                        </div>
+                      </>
+                    ) : (
+                      <MenuBook className="text-gray w-32 h-32" />
+                    )}
+                  </button>
+                </Suspense>
               )
             })}
           </div>
