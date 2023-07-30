@@ -133,7 +133,7 @@ const Page = () => {
 
         {books.length > 0 ? (
           <div className="mt-8 flex flex-wrap gap-10">
-            {books.map((book, index) => {
+            {books.map((book) => {
               const title = book.volumeInfo.title
               const authors = book.volumeInfo?.authors
               const image = book.volumeInfo?.imageLinks?.thumbnail
@@ -152,29 +152,28 @@ const Page = () => {
               }
 
               return (
-                <Suspense key={index} fallback={<Skeleton width={208} height={208} />}>
-                  <button
-                    type="button"
-                    className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
-                      !!title ? "" : "cursor-default"
-                    } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
-                    disabled={!title}
-                    onClick={() => selectBook(book)}
-                  >
-                    {/* TODO: next/imageにする */}
-                    {title ? (
-                      <>
-                        <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
-                        <div className="text-sm mt-2">
-                          {title && <p>{title}</p>}
-                          {authors && authors.length > 0 && <p>{authors[0]}</p>}
-                        </div>
-                      </>
-                    ) : (
-                      <MenuBook className="text-gray w-32 h-32" />
-                    )}
-                  </button>
-                </Suspense>
+                <button
+                  key={book.volumeInfo.title}
+                  type="button"
+                  className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
+                    !!title ? "" : "cursor-default"
+                  } ${isSelected() ? "bg-secondary-light border-secondary" : "bg-white border-gray-light"}`}
+                  disabled={!title}
+                  onClick={() => selectBook(book)}
+                >
+                  {/* TODO: next/imageにする */}
+                  {title ? (
+                    <>
+                      <img src={image || "/noImage.jpg"} alt={title} className="max-h-3/5" />
+                      <div className="text-sm mt-2">
+                        {title && <p>{title}</p>}
+                        {authors && authors.length > 0 && <p>{authors[0]}</p>}
+                      </div>
+                    </>
+                  ) : (
+                    <MenuBook className="text-gray w-32 h-32" />
+                  )}
+                </button>
               )
             })}
           </div>
