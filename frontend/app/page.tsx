@@ -7,7 +7,9 @@ import Skeleton from "./_components/skeleton"
 import { uploadedKey } from "@/utils/book"
 
 const getBooks = async (option: { cache: RequestCache } | undefined) => {
+  console.log("通ってる？res before")
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, option)
+  console.log("通ってる？res after", res)
 
   if (!res.ok) {
     throw new Error("データの取得に失敗しました")
@@ -36,11 +38,7 @@ const Page = async ({ searchParams }: { searchParams: { [key: string]: string | 
   return (
     <div className="flex flex-wrap">
       {books.map((book: Book) => {
-        return (
-          <Suspense key={book.title} fallback={<Skeleton width={288} height={192} />}>
-            <BookCard book={book} />
-          </Suspense>
-        )
+        return <BookCard key={book.title} book={book} />
       })}
     </div>
   )
