@@ -38,7 +38,11 @@ const Page = async ({ searchParams }: { searchParams: { [key: string]: string | 
   return (
     <div className="flex flex-wrap">
       {books.map((book: Book) => {
-        return <BookCard key={book.title} book={book} />
+        return (
+          <Suspense key={book.title} fallback={<Skeleton width={288} height={192} />}>
+            <BookCard book={book} />
+          </Suspense>
+        )
       })}
     </div>
   )
