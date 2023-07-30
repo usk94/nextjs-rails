@@ -8,7 +8,7 @@ const getBook = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/${id}/`)
 
   if (!res.ok) {
-    throw new Error("データの取得に失敗しました")
+    throw new Error("Failed to fetch data")
   }
 
   const data = await res.json()
@@ -48,7 +48,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <p className="mt-4 text-base">価格: {book.price}💎</p>
-          <p className="mt-1 text-xs text-gray">このサービスでの通貨はダイヤ 💎 です</p>
+          <p className="mt-1 text-xs text-gray-700">
+            本の料金は1💎〜100💎でランダムに設定されています（このサービスでの通貨はダイヤ 💎 です）
+          </p>
         </div>
       </Suspense>
       <Link
