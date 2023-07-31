@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
       </Link>
       <nav className="flex gap-12 mr-6">
         <Link href="/upload">棚に並べる</Link>
-        <Link href="/home">
+        <Link href="/mypage">
           <AccountCircleIcon />
         </Link>
       </nav>

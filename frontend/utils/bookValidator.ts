@@ -1,20 +1,15 @@
 import { z } from "zod"
 
-export const bookSchemaWithoutId = z.object({
+export const bookSchema = z.object({
+  id: z.number(),
   title: z.string(),
   description: z.string().nullable(),
   author: z.string().nullable(),
   page_count: z.number().nullable(),
   image: z.string().nullable(),
   published_at: z.string().nullable(),
-  price: z.number().positive().max(100),
+  price: z.number(),
 })
-
-export const bookSchema = bookSchemaWithoutId.merge(
-  z.object({
-    id: z.number(),
-  })
-)
 
 export const booksSchema = z.array(bookSchema)
 
