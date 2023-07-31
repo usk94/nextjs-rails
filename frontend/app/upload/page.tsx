@@ -1,15 +1,15 @@
 "use client"
 
 import { Book, GoogleApiBook } from "@/types"
-import { priceSchema, bookSchema } from "@/utils/bookValidator"
+import { priceSchema, bookSchemaWithoutId } from "@/utils/bookValidator"
 import { useState } from "react"
 import Search from "@mui/icons-material/Search"
 import MenuBook from "@mui/icons-material/MenuBook"
 import useSWRMutation from "swr/mutation"
-import { Alert, Snackbar } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { open } from "@/redux/snackbarSlice"
+import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
 
