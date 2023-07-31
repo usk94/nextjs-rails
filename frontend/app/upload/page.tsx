@@ -132,7 +132,7 @@ const Page = () => {
 
         {books.length > 0 ? (
           <div className="mt-8 flex flex-wrap gap-10">
-            {books.map((book) => {
+            {books.map((book, index) => {
               const title = book.volumeInfo.title
               const authors = book.volumeInfo?.authors
               const image = book.volumeInfo?.imageLinks?.thumbnail
@@ -152,7 +152,7 @@ const Page = () => {
 
               return (
                 <button
-                  key={book.volumeInfo.title}
+                  key={index}
                   type="button"
                   className={`flex items-center rounded-xl p-2 justify-center flex-col border w-52 h-52 ${
                     !!title ? "" : "cursor-default"
