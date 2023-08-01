@@ -2,12 +2,15 @@ import { Book } from "@/types"
 import Image from "next/image"
 import { booksSchema } from "@/utils/bookValidator"
 import BookCard from "./_components/bookCard"
+import { Suspense } from "react"
+import Skeleton from "./_components/skeleton"
+import { uploadedKey } from "@/utils/book"
 
-const getBooks = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`)
+const getBooks = async (option: { cache: RequestCache } | undefined) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, option)
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data")
+    throw new Error("データの取得に失敗しました")
   }
 
   const data = await res.json()
@@ -24,14 +27,20 @@ const shuffle = (books: Book[]) => {
   books.sort(() => Math.random() - 0.5)
 }
 
-const Page = async () => {
-  const books = await getBooks()
+const Page = async ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
+  const didUpload = Object.keys(searchParams).some((k) => k === uploadedKey)
+  const option = didUpload ? ({ cache: "no-store" } as const) : undefined
+  const books = await getBooks(option)
   shuffle(books)
 
   return (
     <div className="flex flex-wrap">
       {books.map((book: Book) => {
-        return <BookCard key={book.title} book={book} />
+        return (
+          <Suspense key={book.title} fallback={<Skeleton width={288} height={192} />}>
+            <BookCard book={book} />
+          </Suspense>
+        )
       })}
     </div>
   )

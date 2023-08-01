@@ -13,7 +13,7 @@ import { uploadedKey } from "@/utils/book"
 
 const maxResults = 5
 
-const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
+const updater = async (url: string, { arg: { book } }: { arg: { book: Omit<Book, "id"> } }) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,7 +26,7 @@ const updateBook = async (url: string, { arg: { book } }: { arg: { book: Omit<Bo
 }
 
 const Page = () => {
-  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updateBook)
+  const { trigger, isMutating } = useSWRMutation(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, updater)
   const [searchWord, setSearchWord] = useState("")
   const [books, setBooks] = useState<GoogleApiBook[]>(
     Array(5).fill({
@@ -80,7 +80,7 @@ const Page = () => {
 
     const result = priceSchema.safeParse(Number(e.target.value))
     if (result.success) {
-      setPrice(result.data)
+      setPrice(Number(result.data))
       priceError && setPriceError("")
       return
     }
@@ -88,14 +88,19 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
-    // const result = bookSchema.safeParse({ ...selectedBook, price })
-    // if (result.success) {
-    //   selectedBook && (await trigger({ book: result.data }))
-    //   return
-    // }
-    router.push("/")
+    const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
+    if (result.success) {
+      selectedBook && (await trigger({ book: result.data }))
+      router.push(`/?${uploadedKey}`)
+      router.refresh()
+      setTimeout(() => {
+        dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
+      }, 500)
+      return
+    }
+
     setTimeout(() => {
-      dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
+      dispatch(open({ severity: "error", text: "本の保存に失敗しました。再度お試しください。" }))
     }, 500)
   }
 
