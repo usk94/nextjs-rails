@@ -7,6 +7,7 @@ import Skeleton from "./_components/skeleton"
 import { uploadedKey } from "@/utils/book"
 
 const getBooks = async (option: { cache: RequestCache } | undefined) => {
+  console.log("option hoge", option)
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/books/`, option)
 
   if (!res.ok) {
