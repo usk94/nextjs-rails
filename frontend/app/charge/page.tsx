@@ -1,26 +1,30 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 const Page = () => {
   const handleTap = (event: MouseEvent | TouchEvent | PointerEvent) => {
-    console.log("タップしたよ！")
+    setIsTapped(false)
   }
+  const [isTapped, setIsTapped] = useState(false)
 
   return (
     <div className="w-screen h-screen">
       <div className="flex justify-center items-center">
         <motion.button
+          className="flex justify-center items-center"
           onTap={handleTap}
-          className="text-7xl"
           whileHover={{
-            scale: 1.2,
-            // transition: { duration: 0.2 },
-            transition: { type: "spring", stiffness: 400, damping: 17 },
+            scale: 1.1,
+            transition: { type: "tween" },
           }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.9, transition: { duration: 1 } }}
+          onTapStart={() => setIsTapped(true)}
         >
-          💎
+          {isTapped && <span className="text-xl">✨</span>}
+          <span className="text-7xl">💎</span>
+          {isTapped && <span className="text-xl">✨</span>}
         </motion.button>
       </div>
     </div>
