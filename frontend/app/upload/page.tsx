@@ -91,11 +91,9 @@ const Page = () => {
     const result = bookSchemaWithoutId.safeParse({ ...selectedBook, price })
     if (result.success) {
       selectedBook && (await trigger({ book: result.data }))
-      router.push(`/?${uploadedKey}`)
-      router.refresh()
-      setTimeout(() => {
-        dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
-      }, 500)
+      router.push(`/`)
+
+      dispatch(open({ severity: "info", text: "本を棚に積みました！" }))
       return
     }
 
