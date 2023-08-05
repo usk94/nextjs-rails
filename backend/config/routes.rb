@@ -8,6 +8,7 @@ Rails.application.routes.draw do
           delete "delete_all"
         end
       end
+      resources :users, only: [:create, :show, :destroy]
     end
   end
 end
