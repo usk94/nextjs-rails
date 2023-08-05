@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         end
       end
       resources :users, only: [:create, :show, :destroy]
+      resources :user_points, only: [:create, :show, :update]
     end
   end
 end
