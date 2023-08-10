@@ -7,3 +7,10 @@ services:
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
+
+  - type: redis
+    name: nextjs-rails-redis
+    region: singapore
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
