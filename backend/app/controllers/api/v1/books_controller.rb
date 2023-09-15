@@ -1,5 +1,10 @@
 class Api::V1::BooksController < ApplicationController
   def index
+    session[:foo] = 'FOO'
+    p "session", session.keys
+    p "session id", session.id
+    session.clear
+    p "session after", session.keys
     render json: { books: Book.all }
   end
 
