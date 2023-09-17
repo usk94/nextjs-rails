@@ -206,6 +206,7 @@ DEPENDENCIES
   bootsnap
   debug
   devise
+  dotenv
   dotenv-rails
   foreman
   listen (~> 3.3)
