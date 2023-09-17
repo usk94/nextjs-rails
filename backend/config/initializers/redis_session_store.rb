@@ -4,5 +4,5 @@ Rails.application.config.session_store :redis_session_store,
     expire_after: 30.days,
     ttl: 30.days,
     key_prefix: 'nextjs-rails:session:',
-    url: ENV.REDIS_URL,
+    url: ENV['REDIS_URL'],
   }
