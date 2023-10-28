@@ -12,6 +12,7 @@ const BookCard = ({ book }: { book: Book }) => {
       <div className="ml-4 flex flex-col justify-center">
         <p className="text-base whitespace-normal break-words">{book.title}</p>
         <p className="text-sm text-gray-600 mt-2">{book.author}</p>
+        <p className="mt-2">{book.price}💎</p>
       </div>
     </Link>
   )
