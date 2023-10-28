@@ -29,7 +29,7 @@ const Page = async () => {
   shuffle(books)
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-center">
       {books.map((book: Book) => {
         return <BookCard key={book.title} book={book} />
       })}
